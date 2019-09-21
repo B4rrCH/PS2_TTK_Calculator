@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29306.81
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PS2 TTK Calculator", "BHOT PS2 TTK Calculator\PS2 TTK Calculator.csproj", "{9430287F-89D1-4D99-9949-116ECC9BCAE2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9430287F-89D1-4D99-9949-116ECC9BCAE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9430287F-89D1-4D99-9949-116ECC9BCAE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9430287F-89D1-4D99-9949-116ECC9BCAE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9430287F-89D1-4D99-9949-116ECC9BCAE2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4E4BECC7-0F07-4714-88A0-80A22753E77E}
+	EndGlobalSection
+EndGlobal
