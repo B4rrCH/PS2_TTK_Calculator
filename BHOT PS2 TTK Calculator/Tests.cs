@@ -31,20 +31,16 @@ namespace PS2_TTK_calculator
 
             return _weapon;
         }
-
-
         private Weapon CreateMockMagshot()
         {
             Weapon magshot = MockCensusAPI.GetWeapon(2);
             return magshot;
         }
-
         private Weapon CreateMockBetelgeuse()
         {
             Weapon betelgeuse = MockCensusAPI.GetWeapon(1894);
             return betelgeuse;
         }
-
 
         [Test]
         public void Test_RawDamageAtRanges()
