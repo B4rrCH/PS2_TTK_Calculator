@@ -9,7 +9,16 @@
         xmlns:local="clr-namespace:PS2_TTK_calculator"
         mc:Ignorable="d"
         Title="MainWindow" Height="783" Width="800" WindowState="Normal" Loaded="Window_Loaded" Background="#FF282828">
-
+    <Window.Resources>
+        <Style x:Key="InvisibleDataPoint" TargetType="{x:Type DVC:DataPoint}">
+            <Setter Property="Background" Value="Blue"/>
+            <Setter Property="Template" Value="{x:Null}"/>
+        </Style>
+        <Style x:Key="InvisibleDataPoint2" TargetType="{x:Type DVC:DataPoint}">
+            <Setter Property="Background" Value="Red"/>
+            <Setter Property="Template" Value="{x:Null}"/>
+        </Style>
+    </Window.Resources>
 
     <DockPanel Background="#FF282828">
         <Menu DockPanel.Dock="Top" Background="#FF444444">
@@ -162,6 +171,11 @@
 
 
             <DVC:Chart Grid.Column="2" Margin="10" Grid.Row="3" Name="mc_TTKdist1" Grid.ColumnSpan="2">
+                <DVC:Chart.Axes>
+                    <DVC:LinearAxis Orientation="X" Title="Time to Kill (ms)" Foreground="White" Height="36" VerticalAlignment="Bottom">
+                    </DVC:LinearAxis>
+                    <DVC:LinearAxis Orientation="Y" Title="Probability of TTK" Foreground="White" HorizontalAlignment="Right" Width="50"/>
+                </DVC:Chart.Axes>
                 <DVC:Chart.TitleStyle>
                     <Style TargetType="{x:Type DV:Title}">
                         <Setter Property="FontSize" Value="1"/>
@@ -190,18 +204,23 @@
                     <DVC:LineSeries Title=""
                                     Name="ls_TTKdist1"
                                     IsSelectionEnabled="True"
+                                    DataPointStyle="{StaticResource InvisibleDataPoint}"
                                     
                                     IndependentValueBinding="{Binding Path=Key}"
                                     DependentValueBinding="{Binding Path=Value}"
-                                    ItemsSource="{Binding}" Margin="0,0,0,0">
+                                    ItemsSource="{Binding}"
+                                    Margin="10,0,0,0">
                     </DVC:LineSeries>
                     <DVC:LineSeries Title=""
                                     Name="ls_TTKdist2"
                                     IsSelectionEnabled="True"
+                                    DataPointStyle="{StaticResource InvisibleDataPoint2}"
+                                    
                                     
                                     IndependentValueBinding="{Binding Path=Key}"
                                     DependentValueBinding="{Binding Path=Value}"
-                                    ItemsSource="{Binding}" Background="#00000000" Margin="0,0,0,0"/>
+                                    ItemsSource="{Binding}"
+                                    Margin="10,0,0,0"/>
 
                 </DVC:Chart.Series>
             </DVC:Chart>

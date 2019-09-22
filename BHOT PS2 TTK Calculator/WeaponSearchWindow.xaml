@@ -14,7 +14,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <TextBox x:Name="txt_Search" HorizontalAlignment="Left" Height="23" Margin="61,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="721" TextChanged="txt_Search_TextChagned"/>
+        <TextBox x:Name="txt_Search" Height="23" Margin="61,10,10,0" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="txt_Search_TextChagned"/>
         <Button x:Name="btn_Select" Content="Select" HorizontalAlignment="Left" Margin="682,490,0,0" VerticalAlignment="Top" Width="100" Click="btn_Select_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Search:" VerticalAlignment="Top" Height="23" Width="46"/>
 

@@ -1,7 +1,8 @@
-﻿using NUnit.Framework;
+﻿#if DEBUG
+using NUnit.Framework;
 using System.Collections.Generic;
 
-#if DEBUG
+
 
 namespace PS2_TTK_calculator
 {
@@ -466,7 +467,7 @@ namespace PS2_TTK_calculator
         {
             return new Loadout(CreateMockNMSTarget(true), CreateMockV10(), new double[] { 0, 1 });
         }
-
+        
         [Test]
         public void Test_EqualPair()
         {
