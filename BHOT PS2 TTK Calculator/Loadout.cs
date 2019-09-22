@@ -1,4 +1,7 @@
-﻿namespace PS2_TTK_calculator
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace PS2_TTK_calculator
 {
     class Loadout
     {
@@ -14,29 +17,50 @@
 
         }
 
-        public double[] ProbWins(Loadout enemyLoadout)
+        public double[] ProbWinsAgainst(Loadout enemyLoadout)
         {
             Weapon enemyWeapon = enemyLoadout.weapon;
             Target enemyTarget = enemyLoadout.target;
             double[] enemyProbabilities = enemyLoadout.probabilities;
             TTKDistribution dist = new TTKDistribution();
-            double[] BTK = dist.DistributionOfBulletsToKill(weapon, enemyTarget, probabilities);
-            double[] BTD = dist.DistributionOfBulletsToKill(enemyWeapon, target, enemyProbabilities);
-            double[] ProbabilitiesOfPlayerWinning = { 0, 0 };
+            List<double> BTK = new List<double>(dist.DistributionOfBulletsToKill(weapon, enemyTarget, probabilities));
+            BTK.Add(1 - BTK.Sum());
+            List<double> BTD = new List<double>(dist.DistributionOfBulletsToKill(enemyWeapon, target, enemyProbabilities));
+            BTD.Add(1 - BTD.Sum());
+            double[] ProbabilitiesOfPlayerWinning = { 0, 0, 0 };
 
-            for (int btk = 0; btk < BTK.Length; ++btk)
+            for (int btk = 0; btk < BTK.Count; ++btk)
             {
-                for (int btd = 0; btd < BTD.Length; ++btd)
+                for (int btd = 0; btd < BTD.Count; ++btd)
                 {
-                    if (btk * weapon.fireRateMs < btd * enemyWeapon.fireRateMs)
+                    // Both players still have ammo
+                    if (btk < BTK.Count - 1 && btd < BTD.Count - 1)
+                    {
+                        if (btk * weapon.fireRateMs < btd * enemyWeapon.fireRateMs)
+                        {
+                            ProbabilitiesOfPlayerWinning[0] += BTK[btk] * BTD[btd];
+                        }
+                        else if (btk * weapon.fireRateMs > btd * enemyWeapon.fireRateMs)
+                        {
+                            ProbabilitiesOfPlayerWinning[1] += BTK[btk] * BTD[btd];
+                        }
+                        else { ProbabilitiesOfPlayerWinning[2] += BTK[btk] * BTD[btd]; };
+                    }
+                    // Enemy target has run out of bullets, this target still has ammo
+                    else if (btk < BTK.Count - 1 && btd == BTD.Count - 1)
                     {
                         ProbabilitiesOfPlayerWinning[0] += BTK[btk] * BTD[btd];
                     }
-                    else if (btk * weapon.fireRateMs > btd * enemyWeapon.fireRateMs)
+                    // This target has run out of bullets, enemy still has ammo
+                    else if (btk == BTK.Count - 1 && btd < BTD.Count - 1)
                     {
                         ProbabilitiesOfPlayerWinning[1] += BTK[btk] * BTD[btd];
                     }
-                    else { };
+                    // Both players are out of bullets
+                    else
+                    {
+                        // Do nothing, not a kill trade
+                    }
                 }
             }
             return ProbabilitiesOfPlayerWinning;

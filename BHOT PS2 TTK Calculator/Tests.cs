@@ -1,6 +1,8 @@
 ﻿using NUnit.Framework;
 using System.Collections.Generic;
 
+#if DEBUG
+
 namespace PS2_TTK_calculator
 {
     [TestFixture]
@@ -310,6 +312,11 @@ namespace PS2_TTK_calculator
             Weapon betelgeuse = MockCensusAPI.GetWeapon(1894);
             return betelgeuse;
         }
+        private Weapon CreateMockV10()
+        {
+            Weapon V10 = MockCensusAPI.GetWeapon(26003);
+            return V10;
+        }
 
 
         [Test]
@@ -365,6 +372,27 @@ namespace PS2_TTK_calculator
             }
             Assert.LessOrEqual(pTotal, 1);
             Assert.GreaterOrEqual(pTotal, 0.9);
+
+            pTotal = 0;
+            double[] MagShot_TTK = dist.DistributionOfBulletsToKill(magShot, target, probabilities);
+            for (int i = 0; i < MagShot_TTK.Length; ++i)
+            {
+                pTotal += MagShot_TTK[i];
+            }
+            Assert.LessOrEqual(pTotal, 1);
+            Assert.GreaterOrEqual(pTotal, 0.2);
+        }
+
+        [Test]
+        public void Test_PerfectV10GetsInstagib()
+        {
+            Weapon V10 = CreateMockV10();
+            Target target = CreateMockStandardTarget();
+            TTKDistribution dist = new TTKDistribution();
+
+            double[] V10_TTK= dist.DistributionOfBulletsToKill(V10, target, new double[] { 0, 1 });
+            Assert.AreEqual(1, V10_TTK[1]);
+
         }
     }
 
@@ -408,6 +436,11 @@ namespace PS2_TTK_calculator
             return betelgeuse;
         }
 
+        private Weapon CreateMockV10()
+        {
+            Weapon V10 = MockCensusAPI.GetWeapon(26003);
+            return V10;
+        }
 
         private Loadout CreateMockHALoadout()
         {
@@ -429,12 +462,16 @@ namespace PS2_TTK_calculator
             return new Loadout(CreateMockInfiltratorTarget(), CreateMockMagshot(), probabilities);
         }
 
+        private Loadout CreateMockPerfectSniper()
+        {
+            return new Loadout(CreateMockNMSTarget(true), CreateMockV10(), new double[] { 0, 1 });
+        }
 
         [Test]
         public void Test_EqualPair()
         {
             Loadout MLGproVirgin = CreateMockHALoadout();
-            double[] p = MLGproVirgin.ProbWins(MLGproVirgin);
+            double[] p = MLGproVirgin.ProbWinsAgainst(MLGproVirgin);
             Assert.AreEqual(p[0], p[1], 0.00001);
             Assert.Greater(1, p[0] + p[1]);
         }
@@ -443,9 +480,19 @@ namespace PS2_TTK_calculator
         {
             Loadout MLGproVirgin = CreateMockHALoadout();
             Loadout UselessStalker = CreateMockStalkerLoadout();
-            double[] p = MLGproVirgin.ProbWins(UselessStalker);
+            double[] p = MLGproVirgin.ProbWinsAgainst(UselessStalker);
             Assert.Greater(p[0], p[1]);
+        }
 
+        [Test]
+        public void Test_PerfectInstagibAlwaysWins()
+        {
+            Loadout Sykka = CreateMockPerfectSniper();
+            Loadout UselessStalker = CreateMockStalkerLoadout();
+            double[] p = Sykka.ProbWinsAgainst(UselessStalker);
+            Assert.AreEqual(1, p[0], 0.01);
         }
     }
 }
+
+#endif

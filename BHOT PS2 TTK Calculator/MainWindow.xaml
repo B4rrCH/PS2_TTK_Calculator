@@ -109,7 +109,7 @@
                 <RowDefinition Height="70"/>
                 <RowDefinition Height="100"/>
                 <RowDefinition/>
-                <RowDefinition Height="100"/>
+                <RowDefinition Height="124"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="139"/>
@@ -206,10 +206,11 @@
                 </DVC:Chart.Series>
             </DVC:Chart>
             <Button Content="Update Distribution" HorizontalAlignment="Right" Margin="0,0,14,14" Grid.Row="3" VerticalAlignment="Bottom" Width="119" Click="btn_UpdateDistribution_Click" Height="20" Grid.Column="3" Foreground="White" Background="#FF282828"/>
-            <TextBlock Margin="10,10,10,0" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Top" Height="23" Foreground="White"><Run Text="Win "/><Run Text="p"/><Run Text="robabilit"/><Run Text="ies"/></TextBlock>
+            <TextBlock Margin="10,10,10,0" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Top" Height="104" Foreground="White"><Run Text="Win probabilities(within the first magazine)"/></TextBlock>
             <TextBlock Name="txt_WinningProbability1" Grid.Column="2" Margin="10,10,10,0" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Top" Height="23" Grid.ColumnSpan="2" Foreground="White"/>
-            <TextBlock x:Name="txt_WinningProbability2" Grid.Column="2" Margin="10,66,10,0" Grid.Row="4" TextWrapping="Wrap" Height="23" VerticalAlignment="Top" Grid.ColumnSpan="2" Foreground="White"/>
-            <TextBlock x:Name="txt_DrawProbability" Grid.Column="2" Grid.ColumnSpan="2" Margin="10,38,10,0" Grid.Row="4" TextWrapping="Wrap" Height="23" VerticalAlignment="Top" Foreground="White" />
+            <TextBlock x:Name="txt_WinningProbability2" Margin="10,38,10,0" Grid.Row="4" TextWrapping="Wrap" Height="23" VerticalAlignment="Top" Grid.ColumnSpan="2" Foreground="White" Grid.Column="2"/>
+            <TextBlock x:Name="txt_KillTradeProbability" Grid.ColumnSpan="2" Margin="10,66,10,0" Grid.Row="4" TextWrapping="Wrap" Height="23" VerticalAlignment="Top" Foreground="White" Grid.Column="2" />
+            <TextBlock x:Name="txt_DrawProbability" Grid.ColumnSpan="2" Margin="10,94,10,0" Grid.Row="4" TextWrapping="Wrap" Height="23" VerticalAlignment="Top" Foreground="White" Grid.Column="2" />
 
         </Grid>
 

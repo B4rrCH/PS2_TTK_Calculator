@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
+using System.Linq;
 
 namespace PS2_TTK_calculator
 {
@@ -37,6 +38,7 @@ namespace PS2_TTK_calculator
 
             UpdateBasicWeaponInfoText();
             UpdateChartableTTKDist();
+            LoadLineChartData();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -66,6 +68,7 @@ namespace PS2_TTK_calculator
             {
                 loadout1.weapon = weaponSelection.GetSelectedWeapon() ?? loadout1.weapon;
                 UpdateBasicWeaponInfoText();
+                LoadLineChartData();
             }
         }
         private void btn_OpenWeapon2Selection_Click(object sender, RoutedEventArgs e)
@@ -75,6 +78,7 @@ namespace PS2_TTK_calculator
             {
                 loadout2.weapon = weaponSelection.GetSelectedWeapon() ?? loadout2.weapon;
                 UpdateBasicWeaponInfoText();
+                LoadLineChartData();
             }
         }
         private void btn_UpdateDistribution_Click(object sender, RoutedEventArgs e)
@@ -116,16 +120,16 @@ namespace PS2_TTK_calculator
         {
             double[] TTKdist1 = ttkDistribution.DistributionOfBulletsToKill(loadout1.weapon, loadout2.target, loadout1.probabilities);
             ChartableTTKDist1.Clear();
-            for (int i = 0; i <= loadout1.weapon.magazineSize; ++i)
+            for (int i = 1; i <= loadout1.weapon.magazineSize; ++i)
             {
-                ChartableTTKDist1.Add(new KeyValuePair<int, double>(i * loadout1.weapon.fireRateMs, TTKdist1[i]));
+                ChartableTTKDist1.Add(new KeyValuePair<int, double>((i-1) * loadout1.weapon.fireRateMs, TTKdist1[i]));
             }
 
             double[] TTKdist2 = ttkDistribution.DistributionOfBulletsToKill(loadout2.weapon, loadout1.target, loadout2.probabilities);
             ChartableTTKDist2.Clear();
-            for (int i = 0; i <= loadout2.weapon.magazineSize; ++i)
+            for (int i = 1; i <= loadout2.weapon.magazineSize; ++i)
             {
-                ChartableTTKDist2.Add(new KeyValuePair<int, double>(i * loadout2.weapon.fireRateMs, TTKdist2[i]));
+                ChartableTTKDist2.Add(new KeyValuePair<int, double>((i-1) * loadout2.weapon.fireRateMs, TTKdist2[i]));
             }
         }
         private void LoadLineChartData()
@@ -134,12 +138,11 @@ namespace PS2_TTK_calculator
 
             ls_TTKdist1.DataContext = ChartableTTKDist1;
             ls_TTKdist2.DataContext = ChartableTTKDist2;
-            double[] winningProbabilities = loadout1.ProbWins(loadout2);
+            double[] winningProbabilities = loadout1.ProbWinsAgainst(loadout2);
             txt_WinningProbability1.Text = string.Format("Player 1 wins with a probability of {0}%.", (decimal)((int)(winningProbabilities[0] * 1000))/10);
             txt_WinningProbability2.Text = string.Format("Player 2 wins with a probability of {0}%.", (decimal)((int)(winningProbabilities[1] * 1000))/10);
-            txt_DrawProbability.Text = string.Format("A draw occurs with probability {0}%.", (decimal)((int)(1000 - winningProbabilities[0] * 1000 - winningProbabilities[1] * 1000))/10);
+            txt_KillTradeProbability.Text = string.Format("A kill trade occurs with probability {0}%.", (decimal)((int)(winningProbabilities[2] * 1000)) / 10);
+            txt_DrawProbability.Text = string.Format("No one gets killed with probability {0}%.", (decimal)((int)((1-winningProbabilities.Sum()) * 1000)) / 10);
         }
-
-
     }
 }
