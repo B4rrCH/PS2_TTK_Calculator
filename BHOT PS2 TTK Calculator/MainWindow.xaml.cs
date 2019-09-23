@@ -137,6 +137,7 @@ namespace PS2_TTK_calculator
             ls_TTKdist1.DataContext = ChartableTTKDist1;
             ls_TTKdist2.DataContext = ChartableTTKDist2;
             double[] winningProbabilities = loadout1.ProbWinsAgainst(loadout2);
+
             txt_WinningProbability1.Text = string.Format("Player 1 wins with a probability of {0}%.", (decimal)((int)(winningProbabilities[0] * 1000))/10);
             txt_WinningProbability2.Text = string.Format("Player 2 wins with a probability of {0}%.", (decimal)((int)(winningProbabilities[1] * 1000))/10);
             txt_KillTradeProbability.Text = string.Format("A kill trade occurs with probability {0}%.", (decimal)((int)(winningProbabilities[2] * 1000)) / 10);

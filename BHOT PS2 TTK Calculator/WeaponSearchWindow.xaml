@@ -8,6 +8,7 @@
         Title="Weapon Search" Height="550.988" Width="800">
     <Grid Background="#FF282828">
         <ListView Name="lvWeaponList" Margin="10,38,10,35" SelectionMode="Single" SelectedIndex="0" MouseDoubleClick="lvWeaponList_MouseDoubleClick" Background="#FF282828" Foreground="White" BorderBrush="{x:Null}">
+            
             <ListView.ItemContainerStyle>
                 <Style TargetType="{x:Type ListViewItem}">
                     <Style.Resources>
@@ -54,7 +55,14 @@
             </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Weapon Name" Width="667"/>
+                    <GridViewColumn Header="Weapon Name" Width="770"/>
+                    <GridView.ColumnHeaderContainerStyle>
+                        <Style TargetType="GridViewColumnHeader">
+                            <Setter Property="Background" Value="#FF282828"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="BorderBrush" Value="White"/>
+                        </Style>
+                    </GridView.ColumnHeaderContainerStyle>
                 </GridView>
             </ListView.View>
         </ListView>
