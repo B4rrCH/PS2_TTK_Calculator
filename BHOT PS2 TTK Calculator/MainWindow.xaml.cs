@@ -126,7 +126,7 @@ namespace PS2_TTK_calculator
         {
             Regex regex = new Regex("[^0-9]+");
             TextBox textBox = (TextBox)sender;
-            if (!regex.IsMatch(textBox.Text))
+            if (string.IsNullOrEmpty(textBox.Text))
             {
                 textBox.Text = "100";
             }
