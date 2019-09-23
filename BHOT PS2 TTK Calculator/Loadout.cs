@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace PS2_TTK_calculator
 {
-    class Loadout
+    public class Loadout
     {
         public Target target;
         public double[] probabilities;

@@ -1,6 +1,6 @@
 ﻿namespace PS2_TTK_calculator
 {
-    class TTKDistribution
+    public class TTKDistribution
     {
         private double ProbabilityOfBTKlessThanOrEqual(int numberOfBullets, Weapon weapon, Target target, double[] p)
         {

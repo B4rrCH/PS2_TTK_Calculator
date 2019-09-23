@@ -2,7 +2,7 @@
 
 namespace PS2_TTK_calculator
 {
-    class Target
+    public class Target
     {
         public readonly int healthPoints;
         public readonly double rangeFromShooter;

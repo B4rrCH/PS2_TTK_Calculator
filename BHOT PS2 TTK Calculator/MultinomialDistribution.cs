@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace PS2_TTK_calculator
 {
-    class MultinomialDistribution
+    public class MultinomialDistribution
     {
         private readonly int numberOfTrials;
         private readonly double[] probabilities;

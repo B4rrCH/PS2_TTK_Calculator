@@ -1,17 +1,17 @@
-﻿#if DEBUG
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using System.Collections.Generic;
+using PS2_TTK_calculator;
 
 
 
-namespace PS2_TTK_calculator
+namespace NUnit.Tests1
 {
     [TestFixture]
-    internal class API_Tests
+    internal class TestClass
     {
-        readonly CensusAPI MockCensusAPI;
+        private readonly CensusAPI MockCensusAPI;
 
-        public API_Tests()
+        public TestClass()
         {
             this.MockCensusAPI = new CensusAPI();
         }
@@ -491,5 +491,3 @@ namespace PS2_TTK_calculator
         }
     }
 }
-
-#endif
