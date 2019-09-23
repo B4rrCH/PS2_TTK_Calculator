@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace PS2_TTK_calculator
 {
@@ -112,6 +113,12 @@ namespace PS2_TTK_calculator
 
             loadout1 = new Loadout(target1, loadout1.weapon, probabilities1);
             loadout2 = new Loadout(target2, loadout2.weapon, probabilities2);
+        }
+
+        private void LimitInputsToNumbers(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
 
         private void UpdateChartableTTKDist()
