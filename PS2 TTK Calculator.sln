@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29306.81
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PS2 TTK Calculator", "BHOT PS2 TTK Calculator\PS2 TTK Calculator.csproj", "{9430287F-89D1-4D99-9949-116ECC9BCAE2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PS2 TTK Calculator", "PS2 TTK Calculator\PS2 TTK Calculator.csproj", "{9430287F-89D1-4D99-9949-116ECC9BCAE2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PS2 TTK Calculator_Tests", "NUnit.Tests1\PS2 TTK Calculator_Tests.csproj", "{8EDF4429-251A-416D-BB68-93F227191BCF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PS2 TTK Calculator_Tests", "PS2 TTK Calculator_Tests\PS2 TTK Calculator_Tests.csproj", "{8EDF4429-251A-416D-BB68-93F227191BCF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

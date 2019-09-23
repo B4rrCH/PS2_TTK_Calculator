@@ -4,7 +4,7 @@ using PS2_TTK_calculator;
 
 
 
-namespace NUnit.Tests1
+namespace PS2_TTK_calculator_Tests
 {
     [TestFixture]
     internal class API_Test

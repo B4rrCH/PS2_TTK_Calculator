@@ -50,7 +50,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BHOT PS2 TTK Calculator\PS2 TTK Calculator.csproj">
+    <ProjectReference Include="..\PS2 TTK Calculator\PS2 TTK Calculator.csproj">
       <Project>{9430287f-89d1-4d99-9949-116ecc9bcae2}</Project>
       <Name>PS2 TTK Calculator</Name>
     </ProjectReference>
