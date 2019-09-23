@@ -1,4 +1,8 @@
-﻿namespace PS2_TTK_calculator
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace PS2_TTK_calculator
 {
     public class TTKDistribution
     {
@@ -22,12 +26,27 @@
         }
         public double[] DistributionOfBulletsToKill(Weapon weapon, Target target, double[] p)
         {
+            List<double> cummulativeResultDist = new List<double>();
+            for (int index = 0; index <= weapon.magazineSize; index++)
+            {
+                cummulativeResultDist.Add(0);
+            };
+            ParallelLoopResult parallelLoopResult =
+            Parallel.For(0, weapon.magazineSize + 1, numberOfBullets =>
+            {
+                cummulativeResultDist[numberOfBullets] = ProbabilityOfBTKlessThanOrEqual(numberOfBullets, weapon, target, p);
+            });
+            while (!parallelLoopResult.IsCompleted)
+            { }
+
             double[] resultDist = new double[weapon.magazineSize + 1];
             resultDist[0] = 0;
+
             for (int numberOfBullets = 1; numberOfBullets <= weapon.magazineSize; ++numberOfBullets)
             {
-                resultDist[numberOfBullets] = ProbabilityOfBTKlessThanOrEqual(numberOfBullets, weapon, target, p) - ProbabilityOfBTKlessThanOrEqual(numberOfBullets - 1, weapon, target, p);
+                resultDist[numberOfBullets] = cummulativeResultDist[numberOfBullets] - cummulativeResultDist[numberOfBullets-1];
             }
+
             return resultDist;
         }
     }
