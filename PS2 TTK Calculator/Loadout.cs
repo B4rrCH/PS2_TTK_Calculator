@@ -65,5 +65,29 @@ namespace PS2_TTK_calculator
             }
             return ProbabilitiesOfPlayerWinning;
         }
-    }
+
+        public double[] ExpectedTTKandTTD(Loadout enemyLoadout)
+        {
+            Weapon enemyWeapon = enemyLoadout.weapon;
+            Target enemyTarget = enemyLoadout.target;
+            double[] enemyProbabilities = enemyLoadout.probabilities;
+            TTKDistribution dist = new TTKDistribution();
+            List<double> BTK = new List<double>(dist.DistributionOfBulletsToKill(weapon, enemyTarget, probabilities));
+            BTK.Add(1 - BTK.Sum());
+            List<double> BTD = new List<double>(dist.DistributionOfBulletsToKill(enemyWeapon, target, enemyProbabilities));
+            BTD.Add(1 - BTD.Sum());
+            double[] expectedTTKandTTD = { 0, 0 };
+
+            for (int btk = 0; btk < BTK.Count; ++btk)
+            {
+                expectedTTKandTTD[0] += weapon.fireRateMs * btk * BTK[btk];
+            }
+            for (int btd = 0; btd < BTD.Count; ++btd)
+            {
+                expectedTTKandTTD[1] += enemyWeapon.fireRateMs * btd * BTD[btd];
+            }
+            return expectedTTKandTTD;
+        }
+
+}
 }

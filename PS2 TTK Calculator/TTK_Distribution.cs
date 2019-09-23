@@ -6,9 +6,9 @@ namespace PS2_TTK_calculator
 {
     public class TTKDistribution
     {
-        private double ProbabilityOfBTKlessThanOrEqual(int numberOfBullets, Weapon weapon, Target target, double[] p)
+        private double ProbabilityOfBTKlessThanOrEqual(int numberOfBullets, Weapon weapon, Target target, double[] probabilities)
         {
-            MultinomialDistribution multinomialDist = new MultinomialDistribution(numberOfBullets, p);
+            MultinomialDistribution multinomialDist = new MultinomialDistribution(numberOfBullets, probabilities);
             double[,] pmf = multinomialDist.GetDist();
             double result = 0;
 
@@ -24,7 +24,7 @@ namespace PS2_TTK_calculator
             }
             return result;
         }
-        public double[] DistributionOfBulletsToKill(Weapon weapon, Target target, double[] p)
+        public double[] DistributionOfBulletsToKill(Weapon weapon, Target target, double[] probabilities)
         {
             List<double> cummulativeResultDist = new List<double>();
             for (int index = 0; index <= weapon.magazineSize; index++)
@@ -34,7 +34,7 @@ namespace PS2_TTK_calculator
             ParallelLoopResult parallelLoopResult =
             Parallel.For(0, weapon.magazineSize + 1, numberOfBullets =>
             {
-                cummulativeResultDist[numberOfBullets] = ProbabilityOfBTKlessThanOrEqual(numberOfBullets, weapon, target, p);
+                cummulativeResultDist[numberOfBullets] = ProbabilityOfBTKlessThanOrEqual(numberOfBullets, weapon, target, probabilities);
             });
             while (!parallelLoopResult.IsCompleted)
             { }
