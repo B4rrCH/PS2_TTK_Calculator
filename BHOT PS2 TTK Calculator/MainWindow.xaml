@@ -209,7 +209,7 @@
                                     IndependentValueBinding="{Binding Path=Key}"
                                     DependentValueBinding="{Binding Path=Value}"
                                     ItemsSource="{Binding}"
-                                    Margin="10,0,0,0">
+                                    Margin="0,0,0,0">
                     </DVC:LineSeries>
                     <DVC:LineSeries Title=""
                                     Name="ls_TTKdist2"
@@ -220,7 +220,7 @@
                                     IndependentValueBinding="{Binding Path=Key}"
                                     DependentValueBinding="{Binding Path=Value}"
                                     ItemsSource="{Binding}"
-                                    Margin="10,0,0,0"/>
+                                    Margin="0,0,0,0"/>
 
                 </DVC:Chart.Series>
             </DVC:Chart>
