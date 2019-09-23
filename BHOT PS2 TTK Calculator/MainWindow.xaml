@@ -127,7 +127,7 @@
                 <ColumnDefinition MinWidth="250" />
 
             </Grid.ColumnDefinitions>
-            <Button x:Name="btn_OpenWeapon1Selection" Click="btn_OpenWeapon1Selection_Click" Content="Select Weapon" Grid.Column="2" Grid.Row="0" Height="20" VerticalAlignment="Top" Margin="10,10,10,0" Background="#FF282828" Foreground="White" BorderBrush="{x:Null}"/>
+            <Button x:Name="btn_OpenWeapon1Selection" Click="btn_OpenWeapon1Selection_Click" Content="Select Weapon" Grid.Column="2" Grid.Row="0" Height="20" VerticalAlignment="Top" Margin="10,10,10,0" Background="#FF282828" Foreground="White"/>
             <TextBlock x:Name="txt_SelectedWeapon1Name" Margin="10,40,10,11" TextWrapping="Wrap" Text="TextBlock" Padding="0,2,0,0" Grid.Column="2" Foreground="White"/>
             <TextBlock Margin="10,40,10,10" TextWrapping="Wrap" Foreground="White">
                 <Run Text="Weapon name"/><LineBreak/>
@@ -136,7 +136,7 @@
                 <Run Text="Headshot Multiplier"/><LineBreak/>
                 <Run Text="Magazine size"/>
             </TextBlock>
-            <Button x:Name="btn_OpenWeapon2Selection" Click="btn_OpenWeapon2Selection_Click" Content="Select Weapon" Grid.Column="3" Grid.Row="0" Height="20" VerticalAlignment="Top" Margin="10,10,10,0" Foreground="White" Background="#FF282828" BorderBrush="{x:Null}"/>
+            <Button x:Name="btn_OpenWeapon2Selection" Click="btn_OpenWeapon2Selection_Click" Content="Select Weapon" Grid.Column="3" Grid.Row="0" Height="20" VerticalAlignment="Top" Margin="10,10,10,0" Foreground="White" Background="#FF282828"/>
             <TextBlock x:Name="txt_SelectedWeapon2Name" Margin="10,41,10,10" TextWrapping="Wrap" Text="TextBlock" Padding="0,2,0,0" Grid.Column="3" Foreground="White"/>
             <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Width="177" Grid.Row="1" Height="23" VerticalAlignment="Top" Text="Accuracy %" Grid.ColumnSpan="3" Foreground="White"/>
             <TextBlock HorizontalAlignment="Left" Margin="10,37,0,0" TextWrapping="Wrap" Width="177" Grid.Row="1" Height="23" VerticalAlignment="Top" Text="Headshots per hit %" Grid.ColumnSpan="3" Foreground="White"/>
