@@ -81,8 +81,8 @@ namespace NUnit.Tests1
             double[] distBetelgeuse = dist.DistributionOfBulletsToKill(betelgeuse, target, probabilities);
             foreach (double ProbabilityOfNumberOfShots in distBetelgeuse)
             {
-                Assert.LessOrEqual(0, ProbabilityOfNumberOfShots);
-                Assert.GreaterOrEqual(1, ProbabilityOfNumberOfShots);
+                Assert.GreaterOrEqual(ProbabilityOfNumberOfShots, 0);
+                Assert.LessOrEqual(ProbabilityOfNumberOfShots,1);
             }
 
             double[] distBetelgeuseFullHS = dist.DistributionOfBulletsToKill(betelgeuse, target, new double[] { 0, 1 });
