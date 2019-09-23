@@ -124,8 +124,13 @@ namespace PS2_TTK_calculator
 
         private void TextBoxLostFocus(object sender, RoutedEventArgs e)
         {
+            Regex regex = new Regex("[^0-9]+");
             TextBox textBox = (TextBox)sender;
-            textBox.Text = "100";
+            if (!regex.IsMatch(textBox.Text))
+            {
+                textBox.Text = "100";
+            }
+
         }
 
         private void UpdateChartableTTKDist()
