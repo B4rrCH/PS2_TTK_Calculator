@@ -170,7 +170,7 @@
             <CheckBox x:Name="chb_NWA2" Content="Nanoweave Armor" Grid.Column="3" Margin="10,67,10,0" Grid.Row="2" VerticalAlignment="Top" Height="23" Click="TargetsChanged" Foreground="White"/>
 
 
-            <DVC:Chart Grid.Column="2" Margin="10" Grid.Row="3" Name="mc_TTKdist1" Grid.ColumnSpan="2">
+            <DVC:Chart Grid.Column="2" Margin="10" Grid.Row="3" Name="mc_TTKdist1" Grid.ColumnSpan="2" Foreground="White" BorderBrush="White">
                 <DVC:Chart.Axes>
                     <DVC:LinearAxis Orientation="X" Title="Time to Kill (ms)" Foreground="White" Height="36" VerticalAlignment="Bottom">
                         <DVC:LinearAxis.TitleStyle>
@@ -185,30 +185,22 @@
                 </DVC:Chart.Axes>
                 <DVC:Chart.TitleStyle>
                     <Style TargetType="{x:Type DV:Title}">
-                        <Setter Property="FontSize" Value="1"/>
-                        <Setter Property="HorizontalAlignment" Value="Center"/>
-                        <Setter Property="Margin" Value="0,0"/>
-                        <Setter Property="Height" Value="0"/>
+                        <Setter Property="Visibility" Value="Hidden"/>
                     </Style>
                 </DVC:Chart.TitleStyle>
                 <DVC:Chart.LegendStyle>
                     <Style TargetType="{x:Type DV:Legend}">
-                        <Setter Property="Width" Value="0"/>
-                        <Setter Property="Margin" Value="0,0"/>
+                        <Setter Property="Width" Value="Auto"/>
+                        <Setter Property="Margin" Value="10"/>
                         <Setter Property="VerticalAlignment" Value="Center"/>
-                        <Setter Property="BorderBrush" Value="#FFDBDBDB"/>
-                        <Setter Property="Background">
-                            <Setter.Value>
-                                <LinearGradientBrush EndPoint="0.442,0.005" StartPoint="0.558,0.995">
-                                    <GradientStop Color="#FFDBDBDB"/>
-                                    <GradientStop Color="White" Offset="1"/>
-                                </LinearGradientBrush>
-                            </Setter.Value>
-                        </Setter>
+                        <Setter Property="BorderBrush" Value="{x:Null}"/>
+                        <Setter Property="Background" Value="{x:Null}"/>
+                        <Setter Property="HorizontalAlignment" Value="Right"/>
+                        <Setter Property="VerticalAlignment" Value="Top"/>
                     </Style>
                 </DVC:Chart.LegendStyle>
                 <DVC:Chart.Series>
-                    <DVC:LineSeries Title=""
+                    <DVC:LineSeries Title="Left loadout"
                                     Name="ls_TTKdist1"
                                     IsSelectionEnabled="True"
                                     DataPointStyle="{StaticResource InvisibleDataPoint}"
@@ -216,9 +208,9 @@
                                     IndependentValueBinding="{Binding Path=Key}"
                                     DependentValueBinding="{Binding Path=Value}"
                                     ItemsSource="{Binding}"
-                                    Margin="0,0,0,0">
+                                    Margin="0,0,0,0" Foreground="{x:Null}">
                     </DVC:LineSeries>
-                    <DVC:LineSeries Title=""
+                    <DVC:LineSeries Title="Right loadout"
                                     Name="ls_TTKdist2"
                                     IsSelectionEnabled="True"
                                     DataPointStyle="{StaticResource InvisibleDataPoint2}"
@@ -227,7 +219,7 @@
                                     IndependentValueBinding="{Binding Path=Key}"
                                     DependentValueBinding="{Binding Path=Value}"
                                     ItemsSource="{Binding}"
-                                    Margin="0,0,0,0"/>
+                                    Margin="0,0,0,0" Foreground="{x:Null}"/>
 
                 </DVC:Chart.Series>
             </DVC:Chart>

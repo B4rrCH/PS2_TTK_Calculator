@@ -114,8 +114,6 @@ namespace PS2_TTK_calculator
             loadout2 = new Loadout(target2, loadout2.weapon, probabilities2);
         }
 
-
-
         private void UpdateChartableTTKDist()
         {
             double[] TTKdist1 = ttkDistribution.DistributionOfBulletsToKill(loadout1.weapon, loadout2.target, loadout1.probabilities);
