@@ -41,7 +41,10 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Tests.cs" />
+    <Compile Include="MultinomialDistribution_Test.cs" />
+    <Compile Include="WinProbability_Test.cs" />
+    <Compile Include="API_Test.cs" />
+    <Compile Include="TTKDistribution_Test.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

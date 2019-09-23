@@ -6,17 +6,61 @@
         xmlns:local="clr-namespace:PS2_TTK_calculator"
         mc:Ignorable="d"
         Title="WeaponSearchWindow" Height="550.988" Width="800">
-    <Grid>
-        <ListView Name="lvWeaponList" Margin="10,38,10,35" SelectionMode="Single" SelectedIndex="0" MouseDoubleClick="lvWeaponList_MouseDoubleClick">
+    <Grid Background="#FF282828">
+        <ListView Name="lvWeaponList" Margin="10,38,10,35" SelectionMode="Single" SelectedIndex="0" MouseDoubleClick="lvWeaponList_MouseDoubleClick" Background="#FF282828" Foreground="White" BorderBrush="{x:Null}">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Style.Resources>
+                        <LinearGradientBrush x:Key="ListItemHoverFill" EndPoint="0,1" StartPoint="0,0">
+                            <GradientStop Color="#FF282828" Offset="0"/>
+                            <GradientStop Color="#FF282828" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Style.Resources>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                <Border CornerRadius="1" SnapsToDevicePixels="True"  
+                                BorderThickness="{TemplateBinding BorderThickness}"   
+                                BorderBrush="{TemplateBinding BorderBrush}"   
+                                Background="{TemplateBinding Background}">
+                                    <Border Name="InnerBorder" CornerRadius="1" BorderThickness="1">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition MaxHeight="11" />
+                                                <RowDefinition />
+                                            </Grid.RowDefinitions>
+
+                                            <Rectangle Name="UpperHighlight" Visibility="Collapsed" Fill="#75FFFFFF" />
+                                            <GridViewRowPresenter Grid.RowSpan="2"   
+                                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"   
+                                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                        </Grid>
+                                    </Border>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="{StaticResource ListItemHoverFill}" />
+                                        <Setter Property="BorderBrush" Value="White" />
+                                        <Setter TargetName="UpperHighlight" Property="Visibility" Value="Hidden" />
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Weapon Name" Width="667"/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <TextBox x:Name="txt_Search" Height="23" Margin="61,10,10,0" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="txt_Search_TextChagned"/>
+        <TextBox x:Name="txt_Search" Height="23" Margin="61,10,10,0" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="txt_Search_TextChagned" Background="#FF282828" Foreground="White"/>
         <Button x:Name="btn_Select" Content="Select" HorizontalAlignment="Left" Margin="682,490,0,0" VerticalAlignment="Top" Width="100" Click="btn_Select_Click"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Search:" VerticalAlignment="Top" Height="23" Width="46"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Search:" VerticalAlignment="Top" Height="23" Width="46" Foreground="White"/>
 
     </Grid>
 </Window>

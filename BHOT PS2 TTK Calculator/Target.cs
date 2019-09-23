@@ -33,7 +33,7 @@ namespace PS2_TTK_calculator
 
         public bool IsEnoughToKill(Weapon weapon, int bodyShots, int headShots)
         {
-            int remainingHealth = healthPoints - (DamagePerBodyShot(weapon) * bodyShots) - (DamagePerHeadShot(weapon) * headShots);
+            int remainingHealth = healthPoints - (DamagePerBodyShot(weapon,true) * bodyShots) - (DamagePerHeadShot(weapon) * headShots);
             return remainingHealth < 0;
         }
 
