@@ -80,11 +80,11 @@ namespace PS2_TTK_calculator
 
             for (int btk = 0; btk < BTK.Count; ++btk)
             {
-                expectedTTKandTTD[0] += weapon.fireRateMs * btk * BTK[btk];
+                expectedTTKandTTD[0] += weapon.fireRateMs * (btk-1) * BTK[btk];
             }
             for (int btd = 0; btd < BTD.Count; ++btd)
             {
-                expectedTTKandTTD[1] += enemyWeapon.fireRateMs * btd * BTD[btd];
+                expectedTTKandTTD[1] += enemyWeapon.fireRateMs * (btd-1) * BTD[btd];
             }
             return expectedTTKandTTD;
         }
