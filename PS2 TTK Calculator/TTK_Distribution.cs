@@ -9,7 +9,7 @@ namespace PS2_TTK_calculator
         private double ProbabilityOfBTKlessThanOrEqual(int numberOfBullets, Weapon weapon, Target target, double[] probabilities)
         {
             MultinomialDistribution multinomialDist = new MultinomialDistribution(numberOfBullets, probabilities);
-            double[,] pmf = multinomialDist.GetDist();
+            double[,] pmf = MultinomialDistribution.GetDist(numberOfBullets, probabilities);
             double result = 0;
 
             for (int BSs = 0; BSs < pmf.GetLength(0); ++BSs)

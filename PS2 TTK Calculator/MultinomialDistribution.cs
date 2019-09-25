@@ -15,7 +15,7 @@ namespace PS2_TTK_calculator
             this.probabilities = AddFailureRateToProbabilities(probabilities_without_failure);
         }
 
-        private double[] AddFailureRateToProbabilities(double[] probabilities_without_failure)
+        private static double[] AddFailureRateToProbabilities(double[] probabilities_without_failure)
         {
             List<double> result = new List<double>(probabilities_without_failure);
             result.Add(1 - probabilities_without_failure.Sum());
@@ -66,7 +66,6 @@ namespace PS2_TTK_calculator
             }
         }
 
-
         private static double Factorial(int n)
         {
             if (n == 0 || n == 1)
@@ -79,7 +78,7 @@ namespace PS2_TTK_calculator
             }
         }
 
-        private double ProbabilityOfMultinomialEvent(int[] k, double[] p)
+        private static double ProbabilityOfMultinomialEvent(int[] k, double[] p)
         {
             if (k.GetLength(0) != p.GetLength(0))
             {
@@ -94,8 +93,9 @@ namespace PS2_TTK_calculator
             return Multinomial(k) * pow;
         }
 
-        public double[,] GetDist()
+        public static double[,] GetDist(int numberOfTrials, double[] probabilitiesWithoutFailureRate)
         {
+            double[] probabilities = AddFailureRateToProbabilities(probabilitiesWithoutFailureRate);
             double[,] pmf = new double[numberOfTrials + 1, numberOfTrials + 1];
             for (int i = 0; i <= numberOfTrials; ++i)
             {

@@ -47,7 +47,7 @@ namespace PS2_TTK_calculator_Tests
         [Test]
         public void Test_MultinomialPMF()
         {
-            double[,] test_multPMF = MockMultinomialDistribution.GetDist();
+            double[,] test_multPMF = MultinomialDistribution.GetDist(MockNumberOfTrials, MockProbabilites);
             Assert.AreEqual(0.006898447265625, test_multPMF[5, 1], 0.0001);
             Assert.AreEqual(0.0051099609375, test_multPMF[3, 2], 0.0001);
             Assert.AreNotEqual(0, test_multPMF[0, 20]);
@@ -60,8 +60,7 @@ namespace PS2_TTK_calculator_Tests
         [Test]
         public void Test_ExtremeCases()
         {
-            MultinomialDistribution multinomialDistribution = new MultinomialDistribution(50, new double[] { 0, 1 });
-            double[,] test_multPMF = multinomialDistribution.GetDist();
+            double[,] test_multPMF = MultinomialDistribution.GetDist(50, new double[] { 0, 1 });
             for (int i = 0; i < test_multPMF.GetLength(0); ++i)
             {
                 for (int j = 0; j < test_multPMF.GetLength(1) - i; ++j)
