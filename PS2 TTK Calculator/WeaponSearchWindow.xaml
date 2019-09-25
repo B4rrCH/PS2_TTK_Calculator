@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PS2_TTK_calculator"
         mc:Ignorable="d"
-        Title="Weapon Search" Height="550.988" Width="800">
+        Title="Weapon Search" Height="550.988" Width="800"
+        FocusManager.FocusedElement="{Binding ElementName=txt_Search}">
     <Grid Background="#FF282828">
         <ListView Name="lvWeaponList"
                   Margin="10,38,10,35"
