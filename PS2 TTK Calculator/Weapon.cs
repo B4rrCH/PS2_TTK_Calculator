@@ -66,9 +66,9 @@ namespace PS2_TTK_calculator
                 case 4: return "Shotgun";
                 case 5: return "SMG";
                 case 6: return "LMG";
-                case 7: return "Assault Rifle";
+                case 7: return "Assault rifle";
                 case 8: return "Carbine";
-                case 11: return "Sniper rilfe";
+                case 11: return "Sniper rifle";
                 case 12: return "Scout rifle";
                 case 14: return "Heavy weapon";
                 case 19: return "Battle rifle";
