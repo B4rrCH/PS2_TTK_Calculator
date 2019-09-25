@@ -31,9 +31,9 @@ namespace PS2_TTK_calculator
                             *
                             (weaponJToken["item_id_join_fire_mode"].Value<int?>("pellets_per_shot") ??
                             1);
-                damageMin = weaponJToken["item_id_join_fire_mode"].Value<int?>("damage_min") ??
+                damageMin = (weaponJToken["item_id_join_fire_mode"].Value<int?>("damage_min") ??
                             weaponJToken["item_id_join_fire_mode"].Value<int?>("damage") ??
-                            1
+                            1)
                             *
                             (weaponJToken["item_id_join_fire_mode"].Value<int?>("pellets_per_shot") ??
                             1);
