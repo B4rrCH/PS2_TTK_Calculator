@@ -7,27 +7,27 @@ using System.Net;
 
 namespace PS2_TTK_calculator
 {
-    public class CensusAPI
+    public static class CensusAPI
     {
         private static string weaponDataURL = "http://census.daybreakgames.com/get/ps2/item?item_category_id=3,5,6,7,8,11,12,14&c:limit=500&c:lang=en&c:join=fire_mode,weapon_datasheet,item_to_weapon^inject_at:fire_mode_2(weapon,weapon_ammo_slot^on:weapon_id^to:weapon_id^list:1,weapon_to_fire_group^on:weapon_id^to:weapon_id^list:1(fire_group^on:fire_group_id^to:fire_group_id,fire_group_to_fire_mode^on:fire_group_id^to:fire_group_id^list:1(fire_mode_2^on:fire_mode_id^to:fire_mode_id^list:1(effect^on:damage_indirect_effect_id^to:effect_id^list:1(effect_type^list:1))))))";
         private static string weaponFilePath = "Data/weapons.json";
 
-        private JObject weaponDataJSON;
-        private List<Weapon> weaponList;
-        private string[] NYIweapons = { "6004198" };
+        private static JObject weaponDataJSON;
+        private static List<Weapon> weaponList;
+        private static string[] NYIweapons = { "6004198" };
 
-        public CensusAPI()
+        static CensusAPI()
         {
             LoadWeaponData();
             LoadWeaponList();
         }
 
-        public List<Weapon> GetWeaponList()
+        public static List<Weapon> GetWeaponList()
         {
             return weaponList;
         }
 
-        public void UpdateWeaponDataFromDBG()
+        public static void UpdateWeaponDataFromDBG()
         {
             using (var webClient = new WebClient())
             {
@@ -44,7 +44,7 @@ namespace PS2_TTK_calculator
 
             }
         }
-        private void LoadWeaponData()
+        private static void LoadWeaponData()
         {
             if (!File.Exists(weaponFilePath))
             {
@@ -52,7 +52,7 @@ namespace PS2_TTK_calculator
             }
             weaponDataJSON = JObject.Parse(File.ReadAllText(weaponFilePath));
         }
-        private void LoadWeaponList()
+        private static void LoadWeaponList()
         {
             if (weaponDataJSON == null)
             {
@@ -69,12 +69,12 @@ namespace PS2_TTK_calculator
 ;
             }
         }
-        public int NumberOfWeapons()
+        public static int NumberOfWeapons()
         {
             return weaponList.Count();
         }
 
-        private int GetIndex(int item_id)
+        private static int GetIndex(int item_id)
         {
             try
             {
@@ -90,7 +90,7 @@ namespace PS2_TTK_calculator
             catch (AccessViolationException) { return -1; };
             return -1;
         }
-        private int GetIndex(string search)
+        private static int GetIndex(string search)
         {
             try
             {
@@ -107,11 +107,11 @@ namespace PS2_TTK_calculator
             return -1;
         }
 
-        private JToken WeaponJTokenFromIndex(int index)
+        private static JToken WeaponJTokenFromIndex(int index)
         {
             return weaponDataJSON["item_list"][index];
         }
-        public Weapon GetWeapon(int item_id)
+        public static Weapon GetWeapon(int item_id)
         {
             if (weaponDataJSON == null)
             {
@@ -120,7 +120,7 @@ namespace PS2_TTK_calculator
             int index = GetIndex(item_id);
             return new Weapon(WeaponJTokenFromIndex(index));
         }
-        public Weapon GetWeapon(string search)
+        public static Weapon GetWeapon(string search)
         {
             if (weaponDataJSON == null)
             {

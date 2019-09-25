@@ -12,7 +12,6 @@ namespace PS2_TTK_calculator
     /// </summary>
     public partial class WindowWeaponSelection : Window
     {
-        private readonly CensusAPI census = new CensusAPI();
         private readonly List<Weapon> weaponList;
         private Weapon selectedWeapon;
 
@@ -20,7 +19,7 @@ namespace PS2_TTK_calculator
         public WindowWeaponSelection()
         {
             InitializeComponent();
-            weaponList = census.GetWeaponList();
+            weaponList = CensusAPI.GetWeaponList();
             lvWeaponList.ItemsSource = weaponList;
             CollectionView weaponView = (CollectionView)CollectionViewSource.GetDefaultView(lvWeaponList.ItemsSource);
             weaponView.Filter = CustomFilter;

@@ -9,13 +9,6 @@ namespace PS2_TTK_calculator_Tests
     [TestFixture]
     internal class API_Test
     {
-        private readonly CensusAPI MockCensusAPI;
-
-        public API_Test()
-        {
-            this.MockCensusAPI = new CensusAPI();
-        }
-
         private Weapon CreateMockWeapon()
         {
             Weapon _weapon = new Weapon
@@ -33,12 +26,12 @@ namespace PS2_TTK_calculator_Tests
         }
         private Weapon CreateMockMagshot()
         {
-            Weapon magshot = MockCensusAPI.GetWeapon(2);
+            Weapon magshot = CensusAPI.GetWeapon(2);
             return magshot;
         }
         private Weapon CreateMockBetelgeuse()
         {
-            Weapon betelgeuse = MockCensusAPI.GetWeapon(1894);
+            Weapon betelgeuse = CensusAPI.GetWeapon(1894);
             return betelgeuse;
         }
 
@@ -192,8 +185,8 @@ namespace PS2_TTK_calculator_Tests
         [Test]
         public void Test_WeaponList()
         {
-            List<Weapon> WeaponList = MockCensusAPI.GetWeaponList();
-            Assert.AreEqual(MockCensusAPI.GetWeapon("Merc"), WeaponList[1]);
+            List<Weapon> WeaponList = CensusAPI.GetWeaponList();
+            Assert.AreEqual(CensusAPI.GetWeapon("Merc"), WeaponList[1]);
         }
     }
 }

@@ -8,14 +8,12 @@ namespace PS2_TTK_calculator_Tests
     [TestFixture]
     internal class TTKDistribution_Test
     {
-        readonly CensusAPI MockCensusAPI;
         readonly double[] probabilities = new double[2];
         readonly double Accuracy = 0.4;
         readonly double HSperHit = 0.3;
 
         public TTKDistribution_Test()
         {
-            MockCensusAPI = new CensusAPI();
             probabilities[0] = Accuracy * (1 - HSperHit);
             probabilities[1] = Accuracy * HSperHit;
         }
@@ -40,18 +38,18 @@ namespace PS2_TTK_calculator_Tests
 
         private Weapon CreateMockMagshot()
         {
-            Weapon magshot = MockCensusAPI.GetWeapon(2);
+            Weapon magshot = CensusAPI.GetWeapon(2);
             return magshot;
         }
 
         private Weapon CreateMockBetelgeuse()
         {
-            Weapon betelgeuse = MockCensusAPI.GetWeapon(1894);
+            Weapon betelgeuse = CensusAPI.GetWeapon(1894);
             return betelgeuse;
         }
         private Weapon CreateMockV10()
         {
-            Weapon V10 = MockCensusAPI.GetWeapon(26003);
+            Weapon V10 = CensusAPI.GetWeapon(26003);
             return V10;
         }
 

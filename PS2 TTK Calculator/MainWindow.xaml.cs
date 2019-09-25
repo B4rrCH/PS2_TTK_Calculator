@@ -16,8 +16,6 @@ namespace PS2_TTK_calculator
         Loadout loadout1, loadout2;
         ObservableCollection<KeyValuePair<int, double>> ChartableTTKDist1, ChartableTTKDist2;
 
-        readonly CensusAPI Census = new CensusAPI();
-
         private bool initializing = false;
         public MainWindow()
         {
@@ -29,8 +27,8 @@ namespace PS2_TTK_calculator
 
             this.Title = "Planetside 2 TTK calculator";
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            this.loadout1 = new Loadout(new Target(), Census.GetWeapon(2), new double[] { 0, 1 });
-            this.loadout2 = new Loadout(new Target(), Census.GetWeapon(3), new double[] { 0, 1 });
+            this.loadout1 = new Loadout(new Target(), CensusAPI.GetWeapon(2), new double[] { 0, 1 });
+            this.loadout2 = new Loadout(new Target(), CensusAPI.GetWeapon(3), new double[] { 0, 1 });
             this.range = 0;
 
             this.ChartableTTKDist1 = new ObservableCollection<KeyValuePair<int, double>>();
@@ -50,7 +48,7 @@ namespace PS2_TTK_calculator
         }
         private void menuRefresh_Click(object sender, RoutedEventArgs e)
         {
-            Census.UpdateWeaponDataFromDBG();
+            CensusAPI.UpdateWeaponDataFromDBG();
         }
         private void menuExit_Click(object sender, RoutedEventArgs e)
         {

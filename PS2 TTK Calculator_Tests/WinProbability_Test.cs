@@ -9,14 +9,6 @@ namespace PS2_TTK_calculator_Tests
     [TestFixture]
     internal class WinProbability_Test
     {
-        readonly CensusAPI MockCensusAPI;
-
-        public WinProbability_Test()
-        {
-            this.MockCensusAPI = new CensusAPI();
-        }
-
-
         private Target CreateMockStandardTarget(bool nanoWeave = false, double range = 0)
         {
             Target target = new Target(range, false, false, nanoWeave);
@@ -34,17 +26,17 @@ namespace PS2_TTK_calculator_Tests
         }
         private Weapon CreateMockMagshot()
         {
-            Weapon magshot = MockCensusAPI.GetWeapon(2);
+            Weapon magshot = CensusAPI.GetWeapon(2);
             return magshot;
         }
         private Weapon CreateMockBetelgeuse()
         {
-            Weapon betelgeuse = MockCensusAPI.GetWeapon(1894);
+            Weapon betelgeuse = CensusAPI.GetWeapon(1894);
             return betelgeuse;
         }
         private Weapon CreateMockV10()
         {
-            Weapon V10 = MockCensusAPI.GetWeapon(26003);
+            Weapon V10 = CensusAPI.GetWeapon(26003);
             return V10;
         }
         private Loadout CreateMockHALoadout()
