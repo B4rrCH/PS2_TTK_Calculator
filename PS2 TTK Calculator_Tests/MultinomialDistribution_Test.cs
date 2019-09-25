@@ -10,7 +10,6 @@ namespace PS2_TTK_calculator_Tests
     {
         private static readonly int MockNumberOfTrials = 20;
         private static readonly double[] MockProbabilites = { 0.3, 0.2 };
-        private readonly MultinomialDistribution MockMultinomialDistribution = new MultinomialDistribution(MockNumberOfTrials, MockProbabilites);
 
         private int Factorial(int n)
         {

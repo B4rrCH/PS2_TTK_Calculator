@@ -4,17 +4,8 @@ using System.Linq;
 
 namespace PS2_TTK_calculator
 {
-    public class MultinomialDistribution
+    public static class MultinomialDistribution
     {
-        private readonly int numberOfTrials;
-        private readonly double[] probabilities;
-
-        public MultinomialDistribution(int numberOfTrials, double[] probabilities_without_failure)
-        {
-            this.numberOfTrials = numberOfTrials;
-            this.probabilities = AddFailureRateToProbabilities(probabilities_without_failure);
-        }
-
         private static double[] AddFailureRateToProbabilities(double[] probabilities_without_failure)
         {
             List<double> result = new List<double>(probabilities_without_failure);
