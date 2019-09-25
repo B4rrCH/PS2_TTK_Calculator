@@ -28,8 +28,8 @@ namespace PS2_TTK_calculator_Tests
         [Test]
         public void Test_Binomial()
         {
-            Assert.AreEqual(2300, MockMultinomialDistribution.Binomial(25, 3));
-            Assert.AreEqual(12870, MockMultinomialDistribution.Binomial(16, 8));
+            Assert.AreEqual(2300, MultinomialDistribution.Binomial(25, 3));
+            Assert.AreEqual(12870, MultinomialDistribution.Binomial(16, 8));
 
         }
 
@@ -37,11 +37,11 @@ namespace PS2_TTK_calculator_Tests
         public void Test_Multinomial()
         {
             int[] k1 = { 1, 4, 4, 2 };
-            Assert.AreEqual(34650, MockMultinomialDistribution.Multinomial(k1));
+            Assert.AreEqual(34650, MultinomialDistribution.Multinomial(k1));
             int[] k2 = { 2, 4, 3, 2, 1 };
-            Assert.AreEqual(831600, MockMultinomialDistribution.Multinomial(k2));
+            Assert.AreEqual(831600, MultinomialDistribution.Multinomial(k2));
             int[] k3 = { 0, 1 };
-            Assert.AreEqual(1, MockMultinomialDistribution.Multinomial(k3));
+            Assert.AreEqual(1, MultinomialDistribution.Multinomial(k3));
         }
 
         [Test]

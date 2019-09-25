@@ -22,7 +22,7 @@ namespace PS2_TTK_calculator
             return result.ToArray();
         }
 
-        public double Binomial(int n, int k)
+        public static double Binomial(int n, int k)
         {
             if (n < k)
             {
@@ -43,41 +43,31 @@ namespace PS2_TTK_calculator
 
 
 
-        private int[] stripZeroes(int[] sequence)
+        private static int[] stripZeroes(int[] sequence)
         {
             return sequence.Where(i => i != 0).ToArray(); ;
         }
-        public double Multinomial(int[] sequence)
+        public static double Multinomial(int[] sequence)
         {
             int[] zerolessSequence = stripZeroes(sequence);
+
             if (zerolessSequence.Any(i => i < 0))
             {
                 return 0;
             }
-            // Degenerate case
-            if (zerolessSequence.GetLength(0) <= 1)
-            {
-                return 1;
-            }
-            // Binomial case
-            if (zerolessSequence.GetLength(0) == 2)
-            {
-                return Binomial(zerolessSequence[0] + zerolessSequence[1], zerolessSequence[1]);
-            }
             else
             {
-                int[] reducedSequence = new int[zerolessSequence.GetLength(0) - 1];
-                reducedSequence[0] = zerolessSequence[0] + zerolessSequence[1];
-                for (int i = 1; i < zerolessSequence.GetLength(0) - 1; ++i)
+                double result = Factorial(zerolessSequence.Sum());
+                foreach(int k in zerolessSequence)
                 {
-                    reducedSequence[i] = zerolessSequence[i + 1];
+                    result /= Factorial(k);
                 }
-                return Binomial(zerolessSequence[0] + zerolessSequence[1], zerolessSequence[1]) * Multinomial(reducedSequence);
+                return result;
             }
         }
 
 
-        private double Factorial(int n)
+        private static double Factorial(int n)
         {
             if (n == 0 || n == 1)
             {
