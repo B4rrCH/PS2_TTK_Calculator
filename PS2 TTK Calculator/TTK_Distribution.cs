@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace PS2_TTK_calculator
@@ -43,7 +42,7 @@ namespace PS2_TTK_calculator
 
             for (int numberOfBullets = 1; numberOfBullets <= weapon.magazineSize; ++numberOfBullets)
             {
-                resultDist[numberOfBullets] = cummulativeResultDist[numberOfBullets] - cummulativeResultDist[numberOfBullets-1];
+                resultDist[numberOfBullets] = cummulativeResultDist[numberOfBullets] - cummulativeResultDist[numberOfBullets - 1];
             }
 
             return resultDist;

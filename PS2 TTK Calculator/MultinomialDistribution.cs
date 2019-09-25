@@ -59,6 +59,12 @@ namespace PS2_TTK_calculator
 
         private static double Factorial(int n)
         {
+            if (n > 106)
+            {
+                string errorMessage = string.Format("Trying to compute {0}!. This might cause a double overflow", n);
+                ArgumentOutOfRangeException exception = new ArgumentOutOfRangeException(paramName: "n", message: errorMessage);
+                throw exception;
+            }
             if (n == 0 || n == 1)
             {
                 return 1;

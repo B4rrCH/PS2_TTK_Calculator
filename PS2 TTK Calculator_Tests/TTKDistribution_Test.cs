@@ -125,7 +125,6 @@ namespace PS2_TTK_calculator_Tests
 
             double[] V10_TTK= TTKDistribution.DistributionOfBulletsToKill(V10, target, new double[] { 0, 1 });
             Assert.AreEqual(1, V10_TTK[1]);
-
         }
     }
 }
