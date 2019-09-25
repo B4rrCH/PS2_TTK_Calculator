@@ -189,7 +189,7 @@ namespace PS2_TTK_calculator_Tests
         public void Test_WeaponList()
         {
             List<Weapon> WeaponList = CensusAPI.GetWeaponList();
-            Assert.AreEqual(CensusAPI.GetWeapon("Merc"), WeaponList[1]);
+            Assert.AreEqual(CensusAPI.GetWeapon(3), WeaponList[1]);
         }
     }
 }

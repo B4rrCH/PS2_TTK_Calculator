@@ -13,6 +13,7 @@ namespace PS2_TTK_calculator
         public int fireRateMs;
         public double headshotMultiplier;
         public int magazineSize;
+        public string categoryName;
 
         public Weapon() { }
 
@@ -32,6 +33,9 @@ namespace PS2_TTK_calculator
                 fireRateMs = weaponJToken["fire_mode_2"]["weapon_id_join_weapon_to_fire_group"][0]["fire_group_id_join_fire_group_to_fire_mode"][0]["fire_mode_id_join_fire_mode_2"][0].Value<int?>("fire_refire_ms") ?? 1;
                 headshotMultiplier = 1.0 + weaponJToken["fire_mode_2"]["weapon_id_join_weapon_to_fire_group"][0]["fire_group_id_join_fire_group_to_fire_mode"][0]["fire_mode_id_join_fire_mode_2"][0].Value<double?>("damage_head_multiplier") ?? 2.0;
                 magazineSize = weaponJToken["fire_mode_2"]["weapon_id_join_weapon_ammo_slot"][0].Value<int?>("clip_size") ?? 30;
+
+
+
             }
             catch
             {
@@ -41,14 +45,26 @@ namespace PS2_TTK_calculator
         }
 
 
-        public bool IsMatch(string pattern)
+        private string weaponCategoryIDtoString(int weaponCategoryID)
         {
-            return weaponName.Contains(pattern);
+            switch (weaponCategoryID)
+            {
+                case 3: return "Sidearm";
+                case 4: return "Shotgun";
+                case 5: return "SMG";
+                case 6: return "LMG";
+                case 7: return "Assault Rifle";
+                case 8: return "Carbine";
+                case 11: return "Sniper rilfe";
+                case 12: return "Scout rifle";
+                case 14: return "Heavy weapon";
+                case 19: return "Battle rifle";
+                case 24: return "Crossbow";
+
+                default: return "Unknown";
+            }
         }
-        public override string ToString()
-        {
-            return weaponName;
-        }
+
         public override bool Equals(object value)
         {
             if (value is null)
