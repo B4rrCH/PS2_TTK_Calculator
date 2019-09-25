@@ -191,5 +191,15 @@ namespace PS2_TTK_calculator_Tests
             List<Weapon> WeaponList = CensusAPI.GetWeaponList();
             Assert.AreEqual(CensusAPI.GetWeapon(3), WeaponList[1]);
         }
+
+        [Test]
+        public void Test_WeaponCategory()
+        {
+            Weapon magShot = CreateMockMagshot();
+            Weapon betelgeuse = CreateMockBetelgeuse();
+
+            Assert.AreEqual("Pistol", magShot.categoryName);
+            Assert.AreEqual("LMG", betelgeuse.categoryName);
+        }
     }
 }

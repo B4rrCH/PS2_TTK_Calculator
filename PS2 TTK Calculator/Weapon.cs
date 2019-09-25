@@ -5,7 +5,7 @@ namespace PS2_TTK_calculator
 {
     public class Weapon
     {
-        public string weaponName = "Not available";
+        public string weaponName;
         public int damageMax;
         public int damageMin;
         public double damageMaxRange;
@@ -13,7 +13,10 @@ namespace PS2_TTK_calculator
         public int fireRateMs;
         public double headshotMultiplier;
         public int magazineSize;
-        public string categoryName;
+        private string categoryName;
+
+        public string CategoryName { get => categoryName;}
+        public string WeaponName { get => weaponName; set => weaponName = value; }
 
         public Weapon() { }
 
@@ -33,9 +36,7 @@ namespace PS2_TTK_calculator
                 fireRateMs = weaponJToken["fire_mode_2"]["weapon_id_join_weapon_to_fire_group"][0]["fire_group_id_join_fire_group_to_fire_mode"][0]["fire_mode_id_join_fire_mode_2"][0].Value<int?>("fire_refire_ms") ?? 1;
                 headshotMultiplier = 1.0 + weaponJToken["fire_mode_2"]["weapon_id_join_weapon_to_fire_group"][0]["fire_group_id_join_fire_group_to_fire_mode"][0]["fire_mode_id_join_fire_mode_2"][0].Value<double?>("damage_head_multiplier") ?? 2.0;
                 magazineSize = weaponJToken["fire_mode_2"]["weapon_id_join_weapon_ammo_slot"][0].Value<int?>("clip_size") ?? 30;
-
-
-
+                categoryName = weaponCategoryIDtoString(weaponJToken.Value<int?>("item_category_id")??0);
             }
             catch
             {
@@ -44,12 +45,16 @@ namespace PS2_TTK_calculator
             }
         }
 
+        public override string ToString()
+        {
+            return this.weaponName;
+        }
 
         private string weaponCategoryIDtoString(int weaponCategoryID)
         {
             switch (weaponCategoryID)
             {
-                case 3: return "Sidearm";
+                case 3: return "Pistol";
                 case 4: return "Shotgun";
                 case 5: return "SMG";
                 case 6: return "LMG";
