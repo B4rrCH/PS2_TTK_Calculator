@@ -16,7 +16,8 @@ namespace PS2_TTK_calculator
         private string categoryName;
 
         public string CategoryName { get => categoryName;}
-        public string WeaponName { get => weaponName; set => weaponName = value; }
+        public string WeaponName { get => weaponName;}
+        public int DamageMax { get => damageMax;}
 
         public Weapon() { }
 

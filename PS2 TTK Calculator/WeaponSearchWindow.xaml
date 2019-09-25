@@ -65,11 +65,14 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Weapon Name"
-                                    Width="570"
+                                    Width="400"
                                     DisplayMemberBinding="{Binding WeaponName}"/>
                     <GridViewColumn Header="Weapon Category"
-                                    Width="200"
+                                    Width="auto"
                                     DisplayMemberBinding="{Binding CategoryName}"/>
+                    <GridViewColumn Header="Maximum Damage"
+                                    Width="auto"
+                                    DisplayMemberBinding="{Binding DamageMax}"/>
                     <GridView.ColumnHeaderContainerStyle>
                         <Style TargetType="GridViewColumnHeader">
                             <Setter Property="Background" Value="#FF282828"/>
