@@ -11,19 +11,6 @@ namespace PS2_TTK_calculator_Tests
         private static readonly int MockNumberOfTrials = 20;
         private static readonly double[] MockProbabilites = { 0.3, 0.2 };
 
-        private int Factorial(int n)
-        {
-            if (n == 0 || n == 1)
-            {
-                return 1;
-            }
-            else
-            {
-                return n * Factorial(n - 1);
-            }
-
-        }
-
         [Test]
         public void Test_Binomial()
         {

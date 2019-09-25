@@ -18,6 +18,7 @@ namespace PS2_TTK_calculator_Tests
             probabilities[1] = Accuracy * HSperHit;
         }
 
+        #region MockObjectCreation
         private Target CreateMockStandardTarget(bool nanoWeave = false, double range = 0)
         {
             Target target = new Target(range, false, false, nanoWeave);
@@ -52,7 +53,7 @@ namespace PS2_TTK_calculator_Tests
             Weapon V10 = CensusAPI.GetWeapon(26003);
             return V10;
         }
-
+        #endregion
 
         [Test]
         public void Test_BTKdist()

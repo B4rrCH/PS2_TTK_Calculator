@@ -9,6 +9,8 @@ namespace PS2_TTK_calculator_Tests
     [TestFixture]
     internal class WinProbability_Test
     {
+
+        #region MockObjectCreation
         private Target CreateMockStandardTarget(bool nanoWeave = false, double range = 0)
         {
             Target target = new Target(range, false, false, nanoWeave);
@@ -61,7 +63,7 @@ namespace PS2_TTK_calculator_Tests
         {
             return new Loadout(CreateMockNMSTarget(true), CreateMockV10(), new double[] { 0, 1 });
         }
-        
+        #endregion
 
 
         [Test]

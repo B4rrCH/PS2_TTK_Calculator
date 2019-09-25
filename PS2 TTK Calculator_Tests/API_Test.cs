@@ -9,6 +9,8 @@ namespace PS2_TTK_calculator_Tests
     [TestFixture]
     internal class API_Test
     {
+
+        #region MockObjectCreation
         private Weapon CreateMockWeapon()
         {
             Weapon _weapon = new Weapon
@@ -34,6 +36,7 @@ namespace PS2_TTK_calculator_Tests
             Weapon betelgeuse = CensusAPI.GetWeapon(1894);
             return betelgeuse;
         }
+        #endregion
 
         [Test]
         public void Test_RawDamageAtRanges()
