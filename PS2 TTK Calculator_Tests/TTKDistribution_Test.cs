@@ -62,12 +62,11 @@ namespace PS2_TTK_calculator_Tests
             Weapon betelgeuse = CreateMockBetelgeuse();
             Weapon magShot = CreateMockMagshot();
             Target target = CreateMockStandardTarget();
-            TTKDistribution dist = new TTKDistribution();
 
-            Assert.AreEqual(0, dist.DistributionOfBulletsToKill(betelgeuse, target, probabilities)[3]);
-            Assert.LessOrEqual(0, dist.DistributionOfBulletsToKill(betelgeuse, target, probabilities)[4]);
-            Assert.AreEqual(0, dist.DistributionOfBulletsToKill(magShot, target, probabilities)[2]);
-            Assert.LessOrEqual(0, dist.DistributionOfBulletsToKill(magShot, target, probabilities)[3]);
+            Assert.AreEqual(0, TTKDistribution.DistributionOfBulletsToKill(betelgeuse, target, probabilities)[3]);
+            Assert.LessOrEqual(0, TTKDistribution.DistributionOfBulletsToKill(betelgeuse, target, probabilities)[4]);
+            Assert.AreEqual(0, TTKDistribution.DistributionOfBulletsToKill(magShot, target, probabilities)[2]);
+            Assert.LessOrEqual(0, TTKDistribution.DistributionOfBulletsToKill(magShot, target, probabilities)[3]);
         }
 
         [Test]
@@ -76,16 +75,15 @@ namespace PS2_TTK_calculator_Tests
             Weapon betelgeuse = CreateMockBetelgeuse();
             Weapon magShot = CreateMockMagshot();
             Target target = CreateMockStandardTarget();
-            TTKDistribution dist = new TTKDistribution();
 
-            double[] distBetelgeuse = dist.DistributionOfBulletsToKill(betelgeuse, target, probabilities);
+            double[] distBetelgeuse = TTKDistribution.DistributionOfBulletsToKill(betelgeuse, target, probabilities);
             foreach (double ProbabilityOfNumberOfShots in distBetelgeuse)
             {
                 Assert.GreaterOrEqual(ProbabilityOfNumberOfShots, 0);
                 Assert.LessOrEqual(ProbabilityOfNumberOfShots,1);
             }
 
-            double[] distBetelgeuseFullHS = dist.DistributionOfBulletsToKill(betelgeuse, target, new double[] { 0, 1 });
+            double[] distBetelgeuseFullHS = TTKDistribution.DistributionOfBulletsToKill(betelgeuse, target, new double[] { 0, 1 });
             foreach (double ProbabilityOfNumberOfShots in distBetelgeuseFullHS)
             {
                 Assert.LessOrEqual(0, ProbabilityOfNumberOfShots);
@@ -99,10 +97,9 @@ namespace PS2_TTK_calculator_Tests
             Weapon betelgeuse = CreateMockBetelgeuse();
             Weapon magShot = CreateMockMagshot();
             Target target = CreateMockStandardTarget();
-            TTKDistribution dist = new TTKDistribution();
 
             double pTotal = 0;
-            double[] BG_TTK = dist.DistributionOfBulletsToKill(betelgeuse, target, probabilities);
+            double[] BG_TTK = TTKDistribution.DistributionOfBulletsToKill(betelgeuse, target, probabilities);
             for (int i = 0; i < BG_TTK.Length; ++i)
             {
                 pTotal += BG_TTK[i];
@@ -111,7 +108,7 @@ namespace PS2_TTK_calculator_Tests
             Assert.GreaterOrEqual(pTotal, 0.9);
 
             pTotal = 0;
-            double[] MagShot_TTK = dist.DistributionOfBulletsToKill(magShot, target, probabilities);
+            double[] MagShot_TTK = TTKDistribution.DistributionOfBulletsToKill(magShot, target, probabilities);
             for (int i = 0; i < MagShot_TTK.Length; ++i)
             {
                 pTotal += MagShot_TTK[i];
@@ -125,9 +122,8 @@ namespace PS2_TTK_calculator_Tests
         {
             Weapon V10 = CreateMockV10();
             Target target = CreateMockStandardTarget();
-            TTKDistribution dist = new TTKDistribution();
 
-            double[] V10_TTK= dist.DistributionOfBulletsToKill(V10, target, new double[] { 0, 1 });
+            double[] V10_TTK= TTKDistribution.DistributionOfBulletsToKill(V10, target, new double[] { 0, 1 });
             Assert.AreEqual(1, V10_TTK[1]);
 
         }

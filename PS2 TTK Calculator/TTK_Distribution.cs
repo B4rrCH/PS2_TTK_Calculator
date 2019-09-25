@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 
 namespace PS2_TTK_calculator
 {
-    public class TTKDistribution
+    public static class TTKDistribution
     {
-        private double ProbabilityOfBTKlessThanOrEqual(int numberOfBullets, Weapon weapon, Target target, double[] probabilities)
+        private static double ProbabilityOfBTKlessThanOrEqual(int numberOfBullets, Weapon weapon, Target target, double[] probabilities)
         {
             double[,] pmf = MultinomialDistribution.GetDist(numberOfBullets, probabilities);
             double result = 0;
@@ -23,7 +23,7 @@ namespace PS2_TTK_calculator
             }
             return result;
         }
-        public double[] DistributionOfBulletsToKill(Weapon weapon, Target target, double[] probabilities)
+        public static double[] DistributionOfBulletsToKill(Weapon weapon, Target target, double[] probabilities)
         {
             List<double> cummulativeResultDist = new List<double>();
             for (int index = 0; index <= weapon.magazineSize; index++)

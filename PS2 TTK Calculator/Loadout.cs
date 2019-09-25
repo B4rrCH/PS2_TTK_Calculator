@@ -22,10 +22,9 @@ namespace PS2_TTK_calculator
             Weapon enemyWeapon = enemyLoadout.weapon;
             Target enemyTarget = enemyLoadout.target;
             double[] enemyProbabilities = enemyLoadout.probabilities;
-            TTKDistribution dist = new TTKDistribution();
-            List<double> BTK = new List<double>(dist.DistributionOfBulletsToKill(weapon, enemyTarget, probabilities));
+            List<double> BTK = new List<double>(TTKDistribution.DistributionOfBulletsToKill(weapon, enemyTarget, probabilities));
             BTK.Add(1 - BTK.Sum());
-            List<double> BTD = new List<double>(dist.DistributionOfBulletsToKill(enemyWeapon, target, enemyProbabilities));
+            List<double> BTD = new List<double>(TTKDistribution.DistributionOfBulletsToKill(enemyWeapon, target, enemyProbabilities));
             BTD.Add(1 - BTD.Sum());
             double[] ProbabilitiesOfPlayerWinning = { 0, 0, 0 };
 
@@ -71,10 +70,9 @@ namespace PS2_TTK_calculator
             Weapon enemyWeapon = enemyLoadout.weapon;
             Target enemyTarget = enemyLoadout.target;
             double[] enemyProbabilities = enemyLoadout.probabilities;
-            TTKDistribution dist = new TTKDistribution();
-            List<double> BTK = new List<double>(dist.DistributionOfBulletsToKill(weapon, enemyTarget, probabilities));
+            List<double> BTK = new List<double>(TTKDistribution.DistributionOfBulletsToKill(weapon, enemyTarget, probabilities));
             BTK.Add(1 - BTK.Sum());
-            List<double> BTD = new List<double>(dist.DistributionOfBulletsToKill(enemyWeapon, target, enemyProbabilities));
+            List<double> BTD = new List<double>(TTKDistribution.DistributionOfBulletsToKill(enemyWeapon, target, enemyProbabilities));
             BTD.Add(1 - BTD.Sum());
             double[] expectedTTKandTTD = { 0, 0 };
 
