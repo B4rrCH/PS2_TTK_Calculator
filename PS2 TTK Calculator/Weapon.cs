@@ -10,7 +10,7 @@ namespace PS2_TTK_calculator
         public int damageMin;
         public double damageMaxRange;
         public double damageMinRange;
-        public int fireRateMs;
+        public int refireTime;
         public double headshotMultiplier;
         public int magazineSize;
         private string categoryName;
@@ -39,7 +39,8 @@ namespace PS2_TTK_calculator
                             1);
                 damageMaxRange = weaponJToken["item_id_join_fire_mode"].Value<double?>("damage_max_range") ?? 500;
                 damageMinRange = weaponJToken["item_id_join_fire_mode"].Value<double?>("damage_min_range") ?? 501;
-                fireRateMs = weaponJToken["fire_mode_2"]["weapon_id_join_weapon_to_fire_group"][0]["fire_group_id_join_fire_group_to_fire_mode"][0]["fire_mode_id_join_fire_mode_2"][0].Value<int?>("fire_refire_ms") ?? 1;
+                refireTime = (weaponJToken["fire_mode_2"]["weapon_id_join_weapon_to_fire_group"][0]["fire_group_id_join_fire_group_to_fire_mode"][0]["fire_mode_id_join_fire_mode_2"][0].Value<int?>("fire_refire_ms") ?? 1)+
+                              (weaponJToken["fire_mode_2"]["weapon_id_join_weapon_to_fire_group"][0]["fire_group_id_join_fire_group"].Value<int?>("chamber_duration_ms") ??0 );
                 headshotMultiplier = 1.0 + weaponJToken["fire_mode_2"]["weapon_id_join_weapon_to_fire_group"][0]["fire_group_id_join_fire_group_to_fire_mode"][0]["fire_mode_id_join_fire_mode_2"][0].Value<double?>("damage_head_multiplier") ?? 2.0;
                 magazineSize = weaponJToken["fire_mode_2"]["weapon_id_join_weapon_ammo_slot"][0].Value<int?>("clip_size") ?? 30;
                 categoryName = weaponCategoryIDtoString(weaponJToken.Value<int?>("item_category_id")??0);
@@ -111,7 +112,7 @@ namespace PS2_TTK_calculator
                 expectedWeapon.damageMin == damageMin &&
                 expectedWeapon.damageMaxRange == damageMaxRange &&
                 expectedWeapon.damageMinRange == damageMinRange &&
-                expectedWeapon.fireRateMs == fireRateMs &&
+                expectedWeapon.refireTime == refireTime &&
                 expectedWeapon.headshotMultiplier == headshotMultiplier;
             return areEqual;
         }
@@ -149,7 +150,7 @@ namespace PS2_TTK_calculator
 
         public string FireRateRPM()
         {
-            int fireRateRPM = 60000 / fireRateMs;
+            int fireRateRPM = 60000 / refireTime;
             return string.Format("{0} RPM", fireRateRPM);
         }
 

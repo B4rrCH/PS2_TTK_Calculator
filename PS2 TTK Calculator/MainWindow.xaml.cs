@@ -134,14 +134,14 @@ namespace PS2_TTK_calculator
             ChartableTTKDist1.Clear();
             for (int i = 1; i <= loadout1.weapon.magazineSize; ++i)
             {
-                ChartableTTKDist1.Add(new KeyValuePair<int, double>((i-1) * loadout1.weapon.fireRateMs, TTKdist1[i]));
+                ChartableTTKDist1.Add(new KeyValuePair<int, double>((i-1) * loadout1.weapon.refireTime, TTKdist1[i]));
             }
 
             double[] TTKdist2 = TTKDistribution.DistributionOfBulletsToKill(loadout2.weapon, loadout1.target, loadout2.probabilities);
             ChartableTTKDist2.Clear();
             for (int i = 1; i <= loadout2.weapon.magazineSize; ++i)
             {
-                ChartableTTKDist2.Add(new KeyValuePair<int, double>((i-1) * loadout2.weapon.fireRateMs, TTKdist2[i]));
+                ChartableTTKDist2.Add(new KeyValuePair<int, double>((i-1) * loadout2.weapon.refireTime, TTKdist2[i]));
             }
         }
         private void LoadLineChartData()

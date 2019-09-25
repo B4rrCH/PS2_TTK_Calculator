@@ -43,7 +43,7 @@ namespace PS2_TTK_calculator
         }
         public int TimeToKillBS(Weapon weapon)
         {
-            return (BodyshotsToKill(weapon) - 1) * weapon.fireRateMs;
+            return (BodyshotsToKill(weapon) - 1) * weapon.refireTime;
         }
 
         public int HeadshotsToKill(Weapon weapon)
@@ -52,7 +52,7 @@ namespace PS2_TTK_calculator
         }
         public int TimeToKillHS(Weapon weapon)
         {
-            return (HeadshotsToKill(weapon) - 1) * weapon.fireRateMs;
+            return (HeadshotsToKill(weapon) - 1) * weapon.refireTime;
         }
 
     };

@@ -22,24 +22,26 @@ namespace PS2_TTK_calculator
             Weapon enemyWeapon = enemyLoadout.weapon;
             Target enemyTarget = enemyLoadout.target;
             double[] enemyProbabilities = enemyLoadout.probabilities;
+
             List<double> BTK = new List<double>(TTKDistribution.DistributionOfBulletsToKill(weapon, enemyTarget, probabilities));
             BTK.Add(1 - BTK.Sum());
             List<double> BTD = new List<double>(TTKDistribution.DistributionOfBulletsToKill(enemyWeapon, target, enemyProbabilities));
             BTD.Add(1 - BTD.Sum());
+
             double[] ProbabilitiesOfPlayerWinning = { 0, 0, 0 };
 
-            for (int btk = 0; btk < BTK.Count; ++btk)
+            for (int btk = 1; btk < BTK.Count; ++btk)
             {
-                for (int btd = 0; btd < BTD.Count; ++btd)
+                for (int btd = 1; btd < BTD.Count; ++btd)
                 {
                     // Both players still have ammo
                     if (btk < BTK.Count - 1 && btd < BTD.Count - 1)
                     {
-                        if (btk * weapon.fireRateMs < btd * enemyWeapon.fireRateMs)
+                        if ((btk-1) * weapon.refireTime < (btd-1) * enemyWeapon.refireTime)
                         {
                             ProbabilitiesOfPlayerWinning[0] += BTK[btk] * BTD[btd];
                         }
-                        else if (btk * weapon.fireRateMs > btd * enemyWeapon.fireRateMs)
+                        else if ((btk-1) * weapon.refireTime > (btd-1) * enemyWeapon.refireTime)
                         {
                             ProbabilitiesOfPlayerWinning[1] += BTK[btk] * BTD[btd];
                         }
@@ -78,11 +80,11 @@ namespace PS2_TTK_calculator
 
             for (int btk = 0; btk < BTK.Count; ++btk)
             {
-                expectedTTKandTTD[0] += weapon.fireRateMs * (btk-1) * BTK[btk];
+                expectedTTKandTTD[0] += weapon.refireTime * (btk-1) * BTK[btk];
             }
             for (int btd = 0; btd < BTD.Count; ++btd)
             {
-                expectedTTKandTTD[1] += enemyWeapon.fireRateMs * (btd-1) * BTD[btd];
+                expectedTTKandTTD[1] += enemyWeapon.refireTime * (btd-1) * BTD[btd];
             }
             return expectedTTKandTTD;
         }

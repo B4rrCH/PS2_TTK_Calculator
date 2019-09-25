@@ -19,7 +19,7 @@ namespace PS2_TTK_calculator_Tests
                 damageMin = 100,
                 damageMaxRange = 10,
                 damageMinRange = 50,
-                fireRateMs = 200,
+                refireTime = 200,
                 headshotMultiplier = 2,
                 magazineSize = 50
             };
@@ -165,13 +165,13 @@ namespace PS2_TTK_calculator_Tests
         {
             Weapon magshot = CreateMockMagshot();
 
-            Assert.AreEqual(magshot.fireRateMs, 171);
+            Assert.AreEqual(magshot.refireTime, 171);
             Assert.AreEqual(magshot.damageMax, 200);
 
             Weapon betelgeuse = CreateMockBetelgeuse();
             Assert.AreEqual(betelgeuse.damageMinRange, 65);
             Assert.AreEqual(betelgeuse.damageMax, 143);
-            Assert.AreEqual(betelgeuse.fireRateMs, 80);
+            Assert.AreEqual(betelgeuse.refireTime, 80);
         }
 
         [Test]
@@ -198,8 +198,8 @@ namespace PS2_TTK_calculator_Tests
             Weapon magShot = CreateMockMagshot();
             Weapon betelgeuse = CreateMockBetelgeuse();
 
-            Assert.AreEqual("Pistol", magShot.categoryName);
-            Assert.AreEqual("LMG", betelgeuse.categoryName);
+            Assert.AreEqual("Pistol", magShot.CategoryName);
+            Assert.AreEqual("LMG", betelgeuse.CategoryName);
         }
     }
 }
