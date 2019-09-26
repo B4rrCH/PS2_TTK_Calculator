@@ -29,7 +29,8 @@
     <MapFileExtensions>true</MapFileExtensions>
     <InstallUrl>https://raw.githubusercontent.com/B4rrCH/PS2_TTK_Calculator/master/PS2%2520TTK%2520Calculator/publish/</InstallUrl>
     <SupportUrl>https://github.com/B4rrCH/PS2_TTK_Calculator/issues</SupportUrl>
-    <SuiteName>PS2 TTK Calculator</SuiteName>
+    <PublisherName>B4rr</PublisherName>
+    <SuiteName>B4rr</SuiteName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <ApplicationRevision>1</ApplicationRevision>
