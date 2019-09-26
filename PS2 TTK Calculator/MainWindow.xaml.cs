@@ -132,19 +132,27 @@ namespace PS2_TTK_calculator
         {
             double[] TTKdist1 = BTKDistribution.DistributionOfBulletsToKill(loadout1.weapon, loadout2.target, loadout1.probabilities);
             ChartableTTKDist1.Clear();
+            if (sld_Range.Value > 0)
+            {
+                ChartableTTKDist1.Add(new KeyValuePair<int, double>(0, 0));
+            }
             for (int i = 1; i <= loadout1.weapon.magazineSize; ++i)
             {
                 ChartableTTKDist1.Add(new KeyValuePair<int, double>(((i - 1) * loadout1.weapon.refireTime)
-                                                                    + (int)(1000 * loadout2.target.rangeFromShooter / loadout1.weapon.muzzleVelocity),
+                                                                    + (int)( loadout2.target.rangeFromShooterM / loadout1.weapon.muzzleVelocityMpMs),
                                                                     TTKdist1[i]));
             }
 
             double[] TTKdist2 = BTKDistribution.DistributionOfBulletsToKill(loadout2.weapon, loadout1.target, loadout2.probabilities);
             ChartableTTKDist2.Clear();
+            if (sld_Range.Value > 0)
+            {
+                ChartableTTKDist2.Add(new KeyValuePair<int, double>(0, 0));
+            }
             for (int i = 1; i <= loadout2.weapon.magazineSize; ++i)
             {
                 ChartableTTKDist2.Add(new KeyValuePair<int, double>(((i - 1) * loadout2.weapon.refireTime)
-                                                                    + (int)(1000 * loadout1.target.rangeFromShooter / loadout2.weapon.muzzleVelocity),
+                                                                    + (int)( loadout1.target.rangeFromShooterM / loadout2.weapon.muzzleVelocityMpMs),
                                                                     TTKdist2[i]));
             }
         }
@@ -157,8 +165,13 @@ namespace PS2_TTK_calculator
             double[] winningProbabilities = loadout1.ProbWinsAgainst(loadout2);
             double[] expectedTTKandTTD = loadout1.ExpectedTTKandTTD(loadout2);
 
-            txt_WinningProbability1.Text = string.Format("Player 1 wins with a probability of {0}%. Their expected TTK (given they do get a kill) is {1} s.", (decimal)((int)(winningProbabilities[0] * 1000))/10, (decimal)((int)(expectedTTKandTTD[0]))/1000);
-            txt_WinningProbability2.Text = string.Format("Player 2 wins with a probability of {0}%. Their expected TTK (given they do get a kill) is {1} s.", (decimal)((int)(winningProbabilities[1] * 1000))/10, (decimal)((int)(expectedTTKandTTD[1]))/1000);
+            txt_WinningProbability1.Text =
+                string.Format("Player 1 wins with a probability of {0}%. Their expected TTK (given they do get a kill) is {1} s.",
+                              (decimal)((int)(winningProbabilities[0] * 1000))/10, 
+                              (decimal)((int)(expectedTTKandTTD[0]))/1000);
+            txt_WinningProbability2.Text = string.Format("Player 2 wins with a probability of {0}%. Their expected TTK (given they do get a kill) is {1} s.", 
+                              (decimal)((int)(winningProbabilities[1] * 1000))/10, 
+                              (decimal)((int)(expectedTTKandTTD[1]))/1000);
             txt_KillTradeProbability.Text = string.Format("A kill trade occurs with probability {0}%.", (decimal)((int)(winningProbabilities[2] * 1000)) / 10);
             txt_DrawProbability.Text = string.Format("No one gets killed with probability {0}%.", (decimal)((int)((1-winningProbabilities.Sum()) * 1000)) / 10);
         }

@@ -13,7 +13,7 @@ namespace PS2_TTK_calculator
         public int refireTime;
         public double headshotMultiplier;
         public int magazineSize;
-        public int muzzleVelocity;
+        public double muzzleVelocityMpMs;
         private string categoryName;
 
         public string CategoryName { get => categoryName;}
@@ -53,7 +53,7 @@ namespace PS2_TTK_calculator
 
                 magazineSize = weaponJToken["fire_mode_2"]["weapon_id_join_weapon_ammo_slot"][0].Value<int?>("clip_size") ?? 30;
 
-                muzzleVelocity = weaponJToken["item_id_join_fire_mode"].Value<int?>("muzzle_velocity") ?? 600;
+                muzzleVelocityMpMs = (weaponJToken["item_id_join_fire_mode"].Value<double?>("muzzle_velocity") ?? 600) /1000;
 
                 categoryName = weaponCategoryIDtoString(weaponJToken.Value<int?>("item_category_id")??0);
             }

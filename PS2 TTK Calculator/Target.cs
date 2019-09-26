@@ -5,12 +5,12 @@ namespace PS2_TTK_calculator
     public class Target
     {
         public readonly int healthPoints;
-        public readonly double rangeFromShooter;
+        public readonly double rangeFromShooterM;
         public readonly double resistanceNWA;
 
         public Target(double range = 0, bool hasHAShield = false, bool isInfiltrator = false, bool hasNWA = false)
         {
-            rangeFromShooter = range;
+            rangeFromShooterM = range;
             healthPoints = 1000 + (hasHAShield ? 450 : 0)-(isInfiltrator?100:0);
             resistanceNWA = hasNWA ? 0.2 : 0;
         }
@@ -19,10 +19,10 @@ namespace PS2_TTK_calculator
         {
             if (resistanceApplies)
             {
-                double unrounded_damage = weapon.RawDamagePerShot(rangeFromShooter) * (1 - resistanceNWA);
+                double unrounded_damage = weapon.RawDamagePerShot(rangeFromShooterM) * (1 - resistanceNWA);
                 return (int)Math.Ceiling(unrounded_damage);
             }
-            else { return weapon.RawDamagePerShot(rangeFromShooter); };
+            else { return weapon.RawDamagePerShot(rangeFromShooterM); };
         }
 
         public int DamagePerHeadShot(Weapon weapon)
