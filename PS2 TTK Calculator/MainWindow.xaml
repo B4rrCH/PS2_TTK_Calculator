@@ -114,7 +114,7 @@
         <Separator/>
         <Grid Margin="5,5,5,10">
             <Grid.RowDefinitions>
-                <RowDefinition Height="135"/>
+                <RowDefinition Height="150"/>
                 <RowDefinition Height="70"/>
                 <RowDefinition Height="100"/>
                 <RowDefinition/>
@@ -131,6 +131,7 @@
             <TextBlock x:Name="txt_SelectedWeapon1Name" Margin="10,40,10,11" TextWrapping="Wrap" Text="TextBlock" Padding="0,2,0,0" Grid.Column="2" Foreground="White"/>
             <TextBlock Margin="10,40,10,10" TextWrapping="Wrap" Foreground="White">
                 <Run Text="Weapon name"/><LineBreak/>
+                <Run Text="Weapon category"/><LineBreak/>
                 <Run Text="Damage model"/><LineBreak/>
                 <Run Text="Rate of fire"/><LineBreak/>
                 <Run Text="Headshot Multiplier"/><LineBreak/>

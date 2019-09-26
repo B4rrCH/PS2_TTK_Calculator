@@ -160,6 +160,7 @@ namespace PS2_TTK_calculator
             string weaponString = "";
 
             weaponString += weaponName + "\n";
+            weaponString += categoryName + "\n";
             weaponString += DamageModel() + "\n";
             weaponString += FireRateRPM().ToString() + "\n";
             weaponString += headshotMultiplier + "\n";
