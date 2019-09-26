@@ -44,14 +44,12 @@ namespace PS2_TTK_calculator
                             * weapon.refireTime
                             + bulletTravelTimeMs[0]
                             < (btd - 1) 
-                            * enemyWeapon.refireTime
-                            + bulletTravelTimeMs[1])
+                            * enemyWeapon.refireTime)
                         {
                             ProbabilitiesOfPlayerWinning[0] += BTK[btk] * BTD[btd];
                         }
                         else if ((btk - 1)
                             * weapon.refireTime
-                            + bulletTravelTimeMs[0]
                             > (btd - 1)
                             * enemyWeapon.refireTime
                             + bulletTravelTimeMs[1])

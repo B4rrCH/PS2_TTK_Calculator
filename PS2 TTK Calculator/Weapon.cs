@@ -19,6 +19,7 @@ namespace PS2_TTK_calculator
         public string CategoryName { get => categoryName;}
         public string WeaponName { get => weaponName;}
         public int DamageMax { get => damageMax;}
+        public int MuzzleVelocityMpS { get => (int)(muzzleVelocityMpMs * 1000); }
 
         public Weapon() { }
 
@@ -176,6 +177,7 @@ namespace PS2_TTK_calculator
             weaponString += FireRateRPM().ToString() + "\n";
             weaponString += headshotMultiplier + "\n";
             weaponString += magazineSize + "\n";
+            weaponString += (muzzleVelocityMpMs * 1000) + " m/s";
             return weaponString;
         }
     };

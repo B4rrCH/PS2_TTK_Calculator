@@ -73,6 +73,9 @@
                     <GridViewColumn Header="Maximum Damage"
                                     Width="auto"
                                     DisplayMemberBinding="{Binding DamageMax}"/>
+                    <GridViewColumn Header="Muzzle Velocity"
+                                    Width="auto"
+                                    DisplayMemberBinding="{Binding MuzzleVelocityMpS}"/>
                     <GridView.ColumnHeaderContainerStyle>
                         <Style TargetType="GridViewColumnHeader">
                             <Setter Property="Background" Value="#FF282828"/>

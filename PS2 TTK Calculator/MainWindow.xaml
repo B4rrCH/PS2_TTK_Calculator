@@ -114,7 +114,7 @@
         <Separator/>
         <Grid Margin="5,5,5,10">
             <Grid.RowDefinitions>
-                <RowDefinition Height="150"/>
+                <RowDefinition Height="165"/>
                 <RowDefinition Height="70"/>
                 <RowDefinition Height="100"/>
                 <RowDefinition/>
@@ -135,7 +135,8 @@
                 <Run Text="Damage model"/><LineBreak/>
                 <Run Text="Rate of fire"/><LineBreak/>
                 <Run Text="Headshot Multiplier"/><LineBreak/>
-                <Run Text="Magazine size"/>
+                <Run Text="Magazine size"/><LineBreak/>
+                <Run Text="Muzzle velocity"/>
             </TextBlock>
             <Button x:Name="btn_OpenWeapon2Selection" Click="btn_OpenWeapon2Selection_Click" Content="Select Weapon" Grid.Column="3" Grid.Row="0" Height="25" VerticalAlignment="Top" Margin="10,10,10,0" Foreground="White" Background="#FF282828"/>
             <TextBlock x:Name="txt_SelectedWeapon2Name" Margin="10,40,10,10" TextWrapping="Wrap" Text="TextBlock" Padding="0,2,0,0" Grid.Column="3" Foreground="White"/>
