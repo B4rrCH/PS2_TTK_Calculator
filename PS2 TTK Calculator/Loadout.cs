@@ -23,9 +23,9 @@ namespace PS2_TTK_calculator
             Target enemyTarget = enemyLoadout.target;
             double[] enemyProbabilities = enemyLoadout.probabilities;
 
-            List<double> BTK = new List<double>(TTKDistribution.DistributionOfBulletsToKill(weapon, enemyTarget, probabilities));
+            List<double> BTK = new List<double>(BTKDistribution.DistributionOfBulletsToKill(weapon, enemyTarget, probabilities));
             BTK.Add(1 - BTK.Sum());
-            List<double> BTD = new List<double>(TTKDistribution.DistributionOfBulletsToKill(enemyWeapon, target, enemyProbabilities));
+            List<double> BTD = new List<double>(BTKDistribution.DistributionOfBulletsToKill(enemyWeapon, target, enemyProbabilities));
             BTD.Add(1 - BTD.Sum());
 
             double[] ProbabilitiesOfPlayerWinning = { 0, 0, 0 };
@@ -72,19 +72,27 @@ namespace PS2_TTK_calculator
             Weapon enemyWeapon = enemyLoadout.weapon;
             Target enemyTarget = enemyLoadout.target;
             double[] enemyProbabilities = enemyLoadout.probabilities;
-            List<double> BTK = new List<double>(TTKDistribution.DistributionOfBulletsToKill(weapon, enemyTarget, probabilities));
+            List<double> BTK = new List<double>(BTKDistribution.DistributionOfBulletsToKill(weapon, enemyTarget, probabilities));
             BTK.Add(1 - BTK.Sum());
-            List<double> BTD = new List<double>(TTKDistribution.DistributionOfBulletsToKill(enemyWeapon, target, enemyProbabilities));
+            List<double> BTD = new List<double>(BTKDistribution.DistributionOfBulletsToKill(enemyWeapon, target, enemyProbabilities));
             BTD.Add(1 - BTD.Sum());
             double[] expectedTTKandTTD = { 0, 0 };
 
             for (int btk = 0; btk < BTK.Count; ++btk)
             {
-                expectedTTKandTTD[0] += weapon.refireTime * (btk-1) * BTK[btk];
+                expectedTTKandTTD[0] += (weapon.refireTime
+                                         * (btk - 1)
+                                         * BTK[btk])
+                                        + (enemyTarget.rangeFromShooter
+                                           / weapon.muzzleVelocity);
             }
             for (int btd = 0; btd < BTD.Count; ++btd)
             {
-                expectedTTKandTTD[1] += enemyWeapon.refireTime * (btd-1) * BTD[btd];
+                expectedTTKandTTD[1] += (enemyWeapon.refireTime 
+                                         * (btd - 1) 
+                                         * BTD[btd])
+                                        + (target.rangeFromShooter
+                                           / enemyWeapon.muzzleVelocity);
             }
             return expectedTTKandTTD;
         }

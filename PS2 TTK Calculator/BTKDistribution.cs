@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace PS2_TTK_calculator
 {
-    public static class TTKDistribution
+    public static class BTKDistribution
     {
         private static double ProbabilityOfBTKlessThanOrEqual(int numberOfBullets, Weapon weapon, Target target, double[] probabilities)
         {
