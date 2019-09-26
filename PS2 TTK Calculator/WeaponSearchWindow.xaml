@@ -87,7 +87,7 @@
             </ListView.View>
         </ListView>
         <TextBox x:Name="txt_Search" Height="23" Margin="61,10,10,0" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="txt_Search_TextChagned" Background="#FF282828" Foreground="White"/>
-        <Button x:Name="btn_Select" Content="Select" Margin="0,490,10,10" Click="btn_Select_Click" Background="#FF282828" Foreground="White" HorizontalAlignment="Right" Width="100"/>
+        <Button x:Name="btn_Select" Content="Select" Margin="0,0,10,10" Click="btn_Select_Click" Background="#FF282828" Foreground="White" HorizontalAlignment="Right" Width="100" Height="20" VerticalAlignment="Bottom"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Search:" VerticalAlignment="Top" Height="23" Width="46" Foreground="White"/>
 
     </Grid>
