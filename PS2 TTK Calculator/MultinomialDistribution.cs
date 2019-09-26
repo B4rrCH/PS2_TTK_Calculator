@@ -93,6 +93,10 @@ namespace PS2_TTK_calculator
         public static double[,] GetDist(int numberOfTrials, double[] probabilitiesWithoutFailureRate)
         {
             double[] probabilities = AddFailureRateToProbabilities(probabilitiesWithoutFailureRate);
+            if (numberOfTrials > 100)
+            {
+                numberOfTrials = 100;
+            }
             double[,] pmf = new double[numberOfTrials + 1, numberOfTrials + 1];
             for (int i = 0; i <= numberOfTrials; ++i)
             {

@@ -69,10 +69,6 @@ namespace PS2_TTK_calculator
 ;
             }
         }
-        public static int NumberOfWeapons()
-        {
-            return weaponList.Count();
-        }
 
         private static int GetIndex(int item_id)
         {
