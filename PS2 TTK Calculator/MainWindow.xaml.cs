@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Windows;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace PS2_TTK_calculator
@@ -138,8 +138,7 @@ namespace PS2_TTK_calculator
             }
             for (int i = 1; i <= loadout1.weapon.magazineSize; ++i)
             {
-                ChartableTTKDist1.Add(new KeyValuePair<int, double>(((i - 1) * loadout1.weapon.refireTime)
-                                                                    + (int)( loadout2.target.rangeFromShooterM / loadout1.weapon.muzzleVelocityMpMs),
+                ChartableTTKDist1.Add(new KeyValuePair<int, double>(((i - 1) * loadout1.weapon.refireTime) + (int)(loadout2.target.rangeFromShooterM / loadout1.weapon.muzzleVelocityMpMs),
                                                                     TTKdist1[i]));
             }
 
@@ -151,8 +150,7 @@ namespace PS2_TTK_calculator
             }
             for (int i = 1; i <= loadout2.weapon.magazineSize; ++i)
             {
-                ChartableTTKDist2.Add(new KeyValuePair<int, double>(((i - 1) * loadout2.weapon.refireTime)
-                                                                    + (int)( loadout1.target.rangeFromShooterM / loadout2.weapon.muzzleVelocityMpMs),
+                ChartableTTKDist2.Add(new KeyValuePair<int, double>(((i - 1) * loadout2.weapon.refireTime) + (int)(loadout1.target.rangeFromShooterM / loadout2.weapon.muzzleVelocityMpMs),
                                                                     TTKdist2[i]));
             }
         }
@@ -167,13 +165,13 @@ namespace PS2_TTK_calculator
 
             txt_WinningProbability1.Text =
                 string.Format("Player 1 wins with a probability of {0}%. Their expected TTK (given they do get a kill) is {1} s.",
-                              (decimal)((int)(winningProbabilities[0] * 1000))/10, 
-                              (decimal)((int)(expectedTTKandTTD[0]))/1000);
-            txt_WinningProbability2.Text = string.Format("Player 2 wins with a probability of {0}%. Their expected TTK (given they do get a kill) is {1} s.", 
-                              (decimal)((int)(winningProbabilities[1] * 1000))/10, 
-                              (decimal)((int)(expectedTTKandTTD[1]))/1000);
+                              (decimal)((int)(winningProbabilities[0] * 1000)) / 10,
+                              (decimal)((int)(expectedTTKandTTD[0])) / 1000);
+            txt_WinningProbability2.Text = string.Format("Player 2 wins with a probability of {0}%. Their expected TTK (given they do get a kill) is {1} s.",
+                              (decimal)((int)(winningProbabilities[1] * 1000)) / 10,
+                              (decimal)((int)(expectedTTKandTTD[1])) / 1000);
             txt_KillTradeProbability.Text = string.Format("A kill trade occurs with probability {0}%.", (decimal)((int)(winningProbabilities[2] * 1000)) / 10);
-            txt_DrawProbability.Text = string.Format("No one gets killed with probability {0}%.", (decimal)((int)((1-winningProbabilities.Sum()) * 1000)) / 10);
+            txt_DrawProbability.Text = string.Format("No one gets killed with probability {0}%.", (decimal)((int)((1 - winningProbabilities.Sum()) * 1000)) / 10);
         }
     }
 }
