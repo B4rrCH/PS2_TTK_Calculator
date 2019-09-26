@@ -10,7 +10,7 @@ using System.Windows;
 [assembly: AssemblyTitle("PS2 TTK Calculator")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("B4rr")]
 [assembly: AssemblyProduct("PS2 TTK Calculator")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
