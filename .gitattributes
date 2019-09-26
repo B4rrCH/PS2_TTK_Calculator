@@ -40,6 +40,15 @@
 #
 # image files are treated as binary by default.
 ###############################################################################
+*.manifest    binary
+*.application binary
+*.deploy      binary
+
+###############################################################################
+# behavior for image files
+#
+# image files are treated as binary by default.
+###############################################################################
 #*.jpg   binary
 #*.png   binary
 #*.gif   binary
