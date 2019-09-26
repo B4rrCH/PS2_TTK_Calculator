@@ -8,9 +8,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PS2 TTK Calculator_Tests", "PS2 TTK Calculator_Tests\PS2 TTK Calculator_Tests.csproj", "{8EDF4429-251A-416D-BB68-93F227191BCF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F96D114E-C3B6-4F58-98DF-2779301E58EF}"
-	ProjectSection(SolutionItems) = preProject
-		MIT License.txt = MIT License.txt
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
